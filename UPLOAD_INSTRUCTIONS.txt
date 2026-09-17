@@ -1,0 +1,24 @@
+ARCVERSE TECHNOLOGIES — CINEMATIC INTRO + KAYA WALKTHROUGH
+
+This single ZIP includes BOTH the earlier cinematic update and the KAYA narrated video. It has all necessary changed assets; you do NOT need to download the old update.
+
+UPLOAD TO THE ROOT OF YOUR EXISTING ARCVERSE-Technologies GITHUB REPOSITORY.
+1. Extract this ZIP on your computer. Do not upload the ZIP itself.
+2. FIRST upload the seven small site/code files and poster listed below, and Commit changes:
+   index.html
+   business.html
+   personal.html
+   websites.html
+   styles.css
+   script.js
+   kaya-walkthrough.html
+   kaya-poster.webp
+3. THEN upload kaya-walkthrough.mp4 BY ITSELF and Commit changes. It is around 11.4 MB. Uploading in its own commit should avoid the previous bulk-upload error.
+4. Do not delete or replace your existing arcverse-brand.png or walkthrough.html. They are still required for the original branding and narrated Business AI demo.
+5. Wait a few minutes for GitHub Pages to redeploy, and if necessary refresh with Ctrl+F5. From Home choose Personal Finance > Watch KAYA in Action, or the KAYA walkthrough link on the Home service card.
+
+KAYA source: your supplied MP4. The H.264 video stream was COPIED WITHOUT RE-ENCODING. AAC audio was recompressed for a smaller download/upload; narration remains included. The video starts only when a visitor presses play (browsers restrict autoplaying audio).
+
+Do not remove any existing files. Original homepage hero artwork is unchanged. Placeholder contact address hello@arcverse.co.za remains to be replaced with your real email before promotion. The original website portfolio link remains a future addition.
+
+The combined ZIP is a LOCAL FILE PACKAGE: it has not been pushed to GitHub.
