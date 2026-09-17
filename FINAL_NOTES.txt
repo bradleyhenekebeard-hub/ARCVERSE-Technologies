@@ -1,0 +1,16 @@
+ARCVERSE FINAL PREVIEW DRAFT
+
+This is the polished preview build prepared before public launch.
+
+Included files:
+- index.html
+- business.html
+- solutions.html
+- styles.css
+- script.js
+- arcverse-brand.png
+
+Notes:
+- The homepage uses the exact ARCVERSE brand artwork supplied by the user.
+- The contact email remains a placeholder: hello@arcverse.co.za
+- This is intended as a preview build for GitHub Pages before wider public promotion.
