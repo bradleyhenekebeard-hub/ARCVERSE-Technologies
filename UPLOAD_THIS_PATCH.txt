@@ -1,0 +1,13 @@
+ARCVERSE FIX — INTRO AND WALKTHROUGH NAVIGATION
+
+1. EXTRACT this zip. Do not upload this zip itself.
+2. GitHub repository > Add file > Upload files. Upload the SMALL files first:
+   index.html, script.js, styles.css, personal.html, kaya-walkthrough.html
+   (GitHub replaces matching names; commit changes.)
+3. Then upload walkthrough.html ALONE and commit it. It includes narration and is large.
+4. DO NOT delete your repo, logo, KAYA MP4, poster, business.html or websites.html.
+5. Visit the home page, Ctrl+F5 to refresh. Intro automatically plays on every homepage load; 'Replay the intro' appears on the homepage. Click it to test without reloading.
+6. KAYA: Next screen/Previous screen/Start again above the video, clickable chapter buttons below. These are jumps in a recorded video, NOT an interactive live product.
+7. Business AI walkthrough: top sticky navigation with Back/Next/Start again, plus original lower controls.
+
+If GitHub warns about file conflicts, choose Commit changes; if it gives a size error, upload walkthrough.html by itself.

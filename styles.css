@@ -187,3 +187,14 @@ html.intro-pending{overflow:hidden}
 .kaya-chapters-grid{display:flex;justify-content:center;flex-wrap:wrap;gap:12px;margin-top:17px}
 .kaya-chapters-grid span{padding:10px 16px;background:rgba(109,188,255,.06);border:1px solid rgba(128,217,255,.22);border-radius:999px;color:#cbdff6;font-size:.9rem}
 @media(max-width:650px){.kaya-video-header,.kaya-video-bottom{padding:12px;align-items:flex-start;flex-direction:column;gap:7px}.kaya-video-shell{border-radius:13px}.kaya-video-section{padding-top:16px}.kaya-chapters-grid{gap:8px}.kaya-chapters-grid span{padding:8px 12px;font-size:.82rem}}
+
+/* Fixes: visible replay and real KAYA chapter controls (September 2026). */
+.intro-replay{font:inherit;color:#bfe7ff;cursor:pointer}
+.kaya-player-nav{display:flex;align-items:center;justify-content:center;flex-wrap:wrap;gap:9px;padding:15px;background:#06162e;border-bottom:1px solid rgba(128,217,255,.31)}
+.kaya-player-nav button,.kaya-jump-list button{font:inherit;cursor:pointer;background:linear-gradient(140deg,#142c4d,#07172a);border:1px solid rgba(130,221,255,.52);border-radius:999px;padding:11px 15px;color:#e4f6ff;font-size:.88rem;font-weight:750;min-height:43px}
+.kaya-player-nav button:hover,.kaya-jump-list button:hover,.kaya-jump-list button[aria-current="true"]{background:#215a83;border-color:#8de9ff;color:white}
+.kaya-player-nav button:disabled{opacity:.4;cursor:not-allowed}
+.kaya-current-step{font-size:.84rem;color:#96eaff;text-align:center;font-weight:800;min-width:168px}
+.kaya-jump-list{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:0 auto 24px;max-width:1080px;padding:17px 12px;background:rgba(8,25,48,.55);border:1px solid rgba(128,217,255,.2);border-radius:0 0 17px 17px}
+.kaya-jump-list button{min-height:36px;padding:7px 13px;font-size:.79rem}
+@media(max-width:680px){.kaya-player-nav{padding:10px 7px;gap:6px}.kaya-player-nav button{font-size:.78rem;padding:9px 11px}.kaya-current-step{order:-1;flex-basis:100%}.kaya-jump-list{padding:11px 8px}.intro-replay{width:100%}}

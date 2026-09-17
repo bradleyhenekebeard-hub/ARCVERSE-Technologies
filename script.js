@@ -32,24 +32,90 @@
     window.addEventListener('resize',()=>{if(window.innerWidth>1190) closeMenu()});
   }
 
-  // Silent cinematic welcome: once per session, only on Home, skip immediately possible.
+  // Homepage introduction. Every homepage opening plays the silent animation,
+  // not just the first tab visit. Replay is available after the animation ends.
   const intro=document.getElementById('arcverse-intro');
-  if(intro && document.documentElement.classList.contains('intro-pending')){
-    let completed=false;
-    let finishTimer;
-    const complete=()=>{
-      if(completed) return;
-      completed=true;
-      clearTimeout(finishTimer);
+  if(intro){
+    let finishTimer=null,hideTimer=null,running=false;
+    const finish=()=>{
+      if(!running)return;
+      running=false;clearTimeout(finishTimer);
       intro.classList.add('intro-out');
       document.documentElement.classList.remove('intro-pending');
       intro.setAttribute('aria-hidden','true');
-      window.setTimeout(()=>intro.remove(),570);
+      hideTimer=window.setTimeout(()=>{intro.classList.remove('intro-out');intro.style.display='';},560);
     };
-    try { sessionStorage.setItem('arcverse_intro_seen','1'); } catch(e) { /* Browsers can disable session storage. */ }
-    intro.setAttribute('aria-hidden','false');
-    const skip=intro.querySelector('.intro-skip');
-    if(skip) skip.addEventListener('click',complete);
-    finishTimer=window.setTimeout(complete,3550);
+    const start=()=>{
+      if(reduce)return;
+      clearTimeout(finishTimer);clearTimeout(hideTimer);
+      intro.style.display='';intro.classList.remove('intro-out');
+      document.documentElement.classList.remove('intro-pending');
+      void intro.offsetWidth; // restart CSS animations reliably when replayed
+      document.documentElement.classList.add('intro-pending');
+      intro.setAttribute('aria-hidden','false');
+      running=true;
+      finishTimer=window.setTimeout(finish,3900);
+    };
+    intro.querySelector('.intro-skip')?.addEventListener('click',finish);
+    document.querySelectorAll('.intro-replay').forEach(b=>b.addEventListener('click',start));
+    document.addEventListener('keydown',e=>{if(e.key==='Escape'&&running)finish()});
+    if(document.documentElement.classList.contains('intro-pending'))start();
+    else intro.setAttribute('aria-hidden','true');
   }
+
+  // The KAYA walkthrough is a recorded video: these controls seek between the
+  // ACTUAL ten slides, rather than pretending the recording is a live application.
+  const chapters=[
+    {at:0,name:'Welcome'},{at:13,name:'Sign in securely'},
+    {at:34,name:'Set up your household'}, {at:54,name:'Record income'},
+    {at:74,name:'Record expenses / receipts'}, {at:94,name:'Monthly bills'},
+    {at:109,name:'Accounts and cards'}, {at:129,name:'Check bank statement'},
+    {at:149,name:'Export monthly report'}, {at:174,name:'Closing'}
+  ];
+  document.querySelectorAll('video.kaya-video').forEach(video=>{
+    const shell=video.closest('.kaya-video-shell');if(!shell)return;
+    const nav=document.createElement('div');
+    nav.className='kaya-player-nav';nav.setAttribute('role','group');
+    nav.setAttribute('aria-label','KAYA walkthrough chapter controls');
+    nav.innerHTML='<button type="button" data-action="start">↺ Start again</button><button type="button" data-action="prev">← Previous screen</button><span class="kaya-current-step" aria-live="polite">01 / 10 · Welcome</span><button type="button" data-action="next">Next screen →</button>';
+    video.before(nav);
+    const label=nav.querySelector('.kaya-current-step');
+    const marks=document.createElement('div');marks.className='kaya-jump-list';
+    marks.setAttribute('role','group');marks.setAttribute('aria-label','Jump to a walkthrough screen');
+    chapters.forEach((c,i)=>{
+      const btn=document.createElement('button');btn.type='button';btn.textContent=`${String(i+1).padStart(2,'0')} · ${c.name}`;
+      btn.setAttribute('aria-label',`Jump to screen ${i+1}: ${c.name}`);
+      btn.addEventListener('click',()=>seekTo(i));marks.appendChild(btn);
+    });
+    shell.after(marks);
+    let requested=null;
+    function currentIndex(){
+      let index=0;chapters.forEach((c,i)=>{if(video.currentTime>=c.at-.5)index=i});return index;
+    }
+    function update(){
+      const n=currentIndex();label.textContent=`${String(n+1).padStart(2,'0')} / 10 · ${chapters[n].name}`;
+      nav.querySelector('[data-action="prev"]').disabled=n===0;
+      nav.querySelector('[data-action="next"]').disabled=n===chapters.length-1;
+      marks.querySelectorAll('button').forEach((b,i)=>{b.setAttribute('aria-current',String(i===n))});
+    }
+    function seekTo(i){
+      i=Math.max(0,Math.min(chapters.length-1,i));
+      requested=chapters[i].at;
+      if(video.readyState===0){video.load();return}
+      video.currentTime=requested;
+      video.pause(); // display selected screen immediately; visitor chooses when to play narration
+      requested=null;update();
+      const rect=video.getBoundingClientRect();
+      if(rect.top<0||rect.top>window.innerHeight-100)nav.scrollIntoView({behavior:'smooth',block:'start'});
+    }
+    video.addEventListener('loadedmetadata',()=>{if(requested!==null){const t=requested;requested=null;video.currentTime=t;video.pause()}update()});
+    video.addEventListener('seeked',update);video.addEventListener('timeupdate',update);
+    nav.addEventListener('click',e=>{
+      const b=e.target.closest('button');if(!b)return;
+      if(b.dataset.action==='start')seekTo(0);
+      if(b.dataset.action==='prev')seekTo(currentIndex()-1);
+      if(b.dataset.action==='next')seekTo(currentIndex()+1);
+    });
+    update();
+  });
 })();
