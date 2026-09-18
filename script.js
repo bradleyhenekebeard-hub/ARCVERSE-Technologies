@@ -35,6 +35,42 @@
   // Remove the skip button entirely, while preserving the brief intro and automatic transition.
   document.querySelectorAll('.intro-skip').forEach(button=>button.remove());
 
+  // Link the marketing website to the EXISTING KAYA application. Authentication stays in KAYA:
+  // each customer uses their own email and receives a secure magic link (no ChatGPT login).
+  const kayaUrl='https://kaya-household-finance.bradleyhenekebeard.chatgpt.site';
+  const addKayaSignIn=(parent,classes='btn-ghost')=>{
+    if(!parent || parent.querySelector('[data-kaya-signin]'))return;
+    const link=document.createElement('a');
+    link.href=kayaUrl;
+    link.className=classes;
+    link.textContent='KAYA Sign In';
+    link.setAttribute('aria-label','Sign in to KAYA Personal Finance with your own email');
+    link.dataset.kayaSignin='true';
+    parent.appendChild(link);
+    return link;
+  };
+  if(menu){
+    const signIn=addKayaSignIn(menu,'btn-ghost');
+    if(signIn)signIn.addEventListener('click',()=>{
+      menu.classList.remove('menu-open');
+      if(toggle){toggle.setAttribute('aria-expanded','false');toggle.setAttribute('aria-label','Open navigation')}
+    });
+  }
+  if(document.querySelector('.hero-home')){
+    addKayaSignIn(document.querySelector('.hero-home .actions'),'btn-ghost');
+    const personalCard=[...document.querySelectorAll('.service-card')].find(card=>card.querySelector('.service-kicker')?.textContent.trim()==='Personal Finance');
+    const body=personalCard?.querySelector('.service-body');
+    if(body){
+      const signIn=addKayaSignIn(body,'service-link kaya-signin-link');
+      if(signIn)signIn.textContent='Already using KAYA? Sign in →';
+    }
+  }
+  if(document.title.includes('Personal Finance')){
+    addKayaSignIn(document.querySelector('.detail-hero .actions'),'btn');
+    const closingActions=document.querySelector('main section:last-of-type .actions');
+    addKayaSignIn(closingActions,'btn-ghost');
+  }
+
   // Homepage service overview (the full website and matching letterhead offer lives in websites.html).
   if(document.querySelector('.hero-home')){
     const branding=[...document.querySelectorAll('.service-card')].find(card=>card.querySelector('.service-kicker')?.textContent.trim()==='Websites & Branding');
@@ -126,7 +162,7 @@
     update();
   });
 
-  // Pricing is a separate, reviewable module; this branch is not the live Pages branch.
+  // Load the separate pricing and client-terms module.
   const pricingScript=document.createElement('script');
   pricingScript.src='pricing.js';
   document.body.appendChild(pricingScript);
