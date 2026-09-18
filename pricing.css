@@ -1,0 +1,22 @@
+/* Scoped ARCVERSE pricing styles. Loaded only with pricing.js. */
+.arc-pricing-section{background:radial-gradient(ellipse at 50% 0,rgba(77,130,255,.08),transparent 63%)}
+.arc-price-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:22px;align-items:stretch}
+.arc-price-card{min-width:0;display:flex;flex-direction:column;padding:30px 26px 28px;background:var(--glass);border:1px solid var(--line);border-radius:28px;box-shadow:var(--glow)}
+.arc-price-card h3{font-size:1.55rem;margin:12px 0}
+.arc-price-card .service-kicker{text-align:center}
+.arc-price{color:var(--cyan);font-weight:850;text-align:center;font-size:clamp(1.45rem,2.3vw,2.05rem);line-height:1.2;margin:12px 0}
+.arc-price-detail,.arc-setup{color:var(--muted);text-align:center;font-size:.94rem;line-height:1.55;margin:4px 0 10px}
+.arc-setup{color:#e4f5ff;font-weight:700;margin-bottom:18px}
+.arc-price-card ul{padding-left:21px;margin:14px 0 25px;color:#c2d2e7;line-height:1.7;flex:1}
+.arc-price-card li+li{margin-top:7px}
+.arc-price-card .btn{text-align:center;white-space:normal;min-height:48px}
+.arc-terms{border:1px solid var(--line);border-radius:24px;background:rgba(10,24,49,.65);max-width:1110px;padding:28px 34px;margin:28px auto 0;color:var(--muted);line-height:1.75}
+.arc-terms h3{color:var(--ink);text-align:left;margin:0 0 14px}
+.arc-terms strong{color:var(--ink)}
+.arc-terms p{margin:10px 0}
+.arc-terms ol{padding-left:22px}
+.arc-terms li{padding:3px 0}
+.arc-terms .btn{margin-top:14px}
+.arc-pricing-footnote{font-size:.86rem;color:var(--muted);text-align:center;max-width:920px;margin:22px auto 0;line-height:1.65}
+@media(max-width:1000px){.arc-price-grid{grid-template-columns:1fr}.arc-price-card{max-width:650px;width:100%;margin-inline:auto}}
+@media(max-width:650px){.arc-price-card{padding:24px 20px}.arc-terms{padding:24px 20px}.arc-price{font-size:1.75rem}}
