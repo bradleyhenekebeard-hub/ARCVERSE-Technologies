@@ -35,18 +35,7 @@
   // Remove the skip button entirely, while preserving the brief intro and automatic transition.
   document.querySelectorAll('.intro-skip').forEach(button=>button.remove());
 
-  // Website and letterhead design are offered as one coordinated visual identity.
-  if(document.querySelector('main .detail-hero') && document.title.includes('Websites & Branding')){
-    const sections=document.querySelectorAll('main section.section');
-    const presence=sections[1];
-    if(presence){
-      const section=document.createElement('section');
-      section.className='section';
-      section.id='matching-brand-design';
-      section.innerHTML='<div class="container"><div class="section-head reveal visible"><p class="kicker">One brand. One professional look.</p><h2>Your website and letterhead, designed to match.</h2><p class="lead">Starting a new business or refreshing an existing one? We can create your website and design a matching company letterhead at the same time. Your logo, colours, typography and overall style carry consistently from your website to quotations, invoices, proposals and official correspondence.</p></div><div class="credibility-strip"><div class="feature-card reveal visible"><h3>Coordinated website design</h3><p>A responsive website built around your company and its visual identity.</p></div><div class="feature-card reveal visible"><h3>Matching letterhead</h3><p>A professional, editable letterhead designed to complement your website and make your business correspondence look consistent.</p></div><div class="feature-card reveal visible"><h3>Consistent brand materials</h3><p>Carry the same identity through company profiles, document templates and other branded materials.</p></div></div></div>';
-      presence.after(section);
-    }
-  }
+  // Homepage service overview (the full website and matching letterhead offer lives in websites.html).
   if(document.querySelector('.hero-home')){
     const branding=[...document.querySelectorAll('.service-card')].find(card=>card.querySelector('.service-kicker')?.textContent.trim()==='Websites & Branding');
     const summary=branding?.querySelector('.service-body p');
