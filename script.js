@@ -125,4 +125,9 @@
     });
     update();
   });
+
+  // Pricing is a separate, reviewable module; this branch is not the live Pages branch.
+  const pricingScript=document.createElement('script');
+  pricingScript.src='pricing.js';
+  document.body.appendChild(pricingScript);
 })();
