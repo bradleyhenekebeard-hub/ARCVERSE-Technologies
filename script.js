@@ -166,4 +166,14 @@
   const pricingScript=document.createElement('script');
   pricingScript.src='pricing.js';
   document.body.appendChild(pricingScript);
+
+  // Cloudflare Web Analytics for this ARCVERSE marketing site only (not the separate KAYA app).
+  // The token is a public site identifier provided by Cloudflare's manual-install snippet.
+  if(!document.querySelector('script[data-cf-beacon]')){
+    const analytics=document.createElement('script');
+    analytics.type='module';
+    analytics.src='https://static.cloudflareinsights.com/beacon.min.js';
+    analytics.setAttribute('data-cf-beacon','{"token":"f74b2f0a13594fd7a91d873b880b9d6a"}');
+    document.body.appendChild(analytics);
+  }
 })();
