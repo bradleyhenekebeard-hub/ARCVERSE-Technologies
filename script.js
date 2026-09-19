@@ -176,4 +176,12 @@
     analytics.setAttribute('data-cf-beacon','{"token":"f74b2f0a13594fd7a91d873b880b9d6a"}');
     document.body.appendChild(analytics);
   }
+
+  // Install context-aware WhatsApp enquiry links across marketing pages.
+  if(!document.querySelector('script[data-arc-whatsapp-loader]')){
+    const whatsapp=document.createElement('script');
+    whatsapp.src='whatsapp.js';
+    whatsapp.dataset.arcWhatsappLoader='true';
+    document.body.appendChild(whatsapp);
+  }
 })();
