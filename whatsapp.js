@@ -63,4 +63,12 @@
     const floating = makeLink(current, 'Chat on WhatsApp', 'arc-whatsapp-float');
     document.body.appendChild(floating);
   }
+
+  // Load the independent, in-house website portfolio showcase without modifying service pricing or KAYA.
+  if (!document.querySelector('script[data-arc-portfolio-loader]')) {
+    const portfolio = document.createElement('script');
+    portfolio.src = 'portfolio.js?v=bsh-20260920';
+    portfolio.dataset.arcPortfolioLoader = 'true';
+    document.body.appendChild(portfolio);
+  }
 })();
