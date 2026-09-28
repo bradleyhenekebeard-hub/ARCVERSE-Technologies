@@ -198,3 +198,30 @@ html.intro-pending{overflow:hidden}
 .kaya-jump-list{display:flex;gap:8px;flex-wrap:wrap;justify-content:center;margin:0 auto 24px;max-width:1080px;padding:17px 12px;background:rgba(8,25,48,.55);border:1px solid rgba(128,217,255,.2);border-radius:0 0 17px 17px}
 .kaya-jump-list button{min-height:36px;padding:7px 13px;font-size:.79rem}
 @media(max-width:680px){.kaya-player-nav{padding:10px 7px;gap:6px}.kaya-player-nav button{font-size:.78rem;padding:9px 11px}.kaya-current-step{order:-1;flex-basis:100%}.kaya-jump-list{padding:11px 8px}.intro-replay{width:100%}}
+
+
+/* HEADER LOGO OVERRIDE — full ARCVERSE artwork, no circular crop */
+.brand{
+  gap:0;
+}
+.brand-emblem{
+  width:92px;
+  height:92px;
+  border-radius:0;
+  background-image:url('arcverse-brand.png');
+  background-size:contain;
+  background-repeat:no-repeat;
+  background-position:center;
+  box-shadow:none;
+  border:0;
+  flex:0 0 auto;
+}
+.brand-word{
+  display:none;
+}
+@media(max-width:650px){
+  .brand-emblem{
+    width:72px;
+    height:72px;
+  }
+}
