@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Clinix Intelligence — ARCVERSE Concept Walkthrough</title>
+<meta name="description" content="A short private concept walkthrough prepared for Dr Manyangane Raymond Billa."><meta name="robots" content="noindex,nofollow,noarchive">
+<style>
+:root{
+  --orange:#f47a2b; --orange-soft:#fff1e7; --ink:#24313a; --slate:#66747e;
+  --platinum:#a7adb1; --line:#dde2e5; --paper:#fff; --mist:#f4f6f7;
+  --dark:#242f35; --green:#2b9a74; --red:#c65353; --amber:#d49a34; --blue:#3f6faf;
+  --shadow:0 26px 70px rgba(36,49,58,.14); --radius:24px;
+}
+*{box-sizing:border-box} html,body{width:100%;height:100%;margin:0}
+body{font-family:Inter,Aptos,"Segoe UI",Arial,sans-serif;background:radial-gradient(circle at 12% 8%,rgba(244,122,43,.10),transparent 28rem),#eef1f3;color:var(--ink);overflow:hidden}
+button{font:inherit}
+.shell{height:100dvh;display:grid;grid-template-rows:auto minmax(0,1fr) auto;gap:14px;padding:18px}
+.topbar{max-width:1500px;width:100%;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:0 10px}
+.brand strong{font-family:Georgia,serif;font-style:italic;font-size:29px;color:var(--orange);line-height:1}.brand span{display:block;margin-top:2px;font-size:9px;font-weight:800;letter-spacing:.2em;color:var(--slate)}
+.demo-tag{font-size:11px;font-weight:800;color:var(--orange);background:var(--orange-soft);border:1px solid #ffd7bc;border-radius:999px;padding:8px 12px;letter-spacing:.06em;text-transform:uppercase}
+.deck{position:relative;max-width:1500px;width:100%;height:100%;margin:0 auto;background:var(--paper);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden;border-top:5px solid var(--orange)}
+.stage{position:absolute;inset:0;padding:52px 60px 86px;display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1.06fr);gap:44px;align-items:center;opacity:0;pointer-events:none;transform:translateX(18px);transition:.38s ease}
+.stage.active{opacity:1;pointer-events:auto;transform:none}
+.stage.cover{grid-template-columns:1.05fr .95fr}
+.eyebrow{font-size:11px;font-weight:900;letter-spacing:.16em;text-transform:uppercase;color:var(--orange);margin:0 0 14px}
+h1,h2{margin:0;color:var(--ink);letter-spacing:-.03em}h1{font-size:58px;line-height:.98}h2{font-size:43px;line-height:1.02}.lead{font-size:19px;line-height:1.5;color:var(--slate);max-width:680px;margin:20px 0 0}.small{font-size:13px;line-height:1.45;color:var(--slate)}
+.pill-row{display:flex;flex-wrap:wrap;gap:9px;margin-top:24px}.pill{border:1px solid var(--line);background:#fff;border-radius:999px;padding:8px 12px;font-size:11px;font-weight:800;color:var(--ink)}.pill.orange{border-color:#ffd7bc;background:var(--orange-soft);color:var(--orange)}
+.primary,.secondary{border:0;border-radius:12px;padding:12px 16px;font-weight:800;cursor:pointer;margin:24px 10px 0 0}.primary{background:var(--orange);color:#fff}.secondary{background:#fff;border:1px solid var(--line);color:var(--ink)}
+.visual{min-height:430px;display:flex;align-items:center;justify-content:center}.glass{width:100%;background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:0 20px 45px rgba(36,49,58,.10);overflow:hidden}.bar{height:44px;background:#f7f8f9;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;align-items:center;padding:0 18px;font-size:10px;font-weight:800;letter-spacing:.08em;color:var(--slate);text-transform:uppercase}.screen{padding:22px}.metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}.metric{border:1px solid var(--line);border-radius:13px;padding:14px;background:#fff}.metric b{display:block;font-size:10px;color:var(--slate);text-transform:uppercase;letter-spacing:.08em}.metric strong{display:block;font-size:28px;margin-top:7px}.metric small{display:block;color:var(--slate);margin-top:5px;font-size:10px}.dot{display:inline-block;width:8px;height:8px;border-radius:50%;margin-right:6px}.green{background:var(--green)}.red{background:var(--red)}.amber{background:var(--amber)}.blue{background:var(--blue)}
+.ai-summary{margin-top:14px;border:1px solid var(--line);background:#f8f9fa;border-radius:13px;padding:15px}.ai-summary b{font-size:10px;color:var(--orange);letter-spacing:.1em}.ai-summary p{font-size:13px;line-height:1.45;margin:9px 0 0}.ask-user{margin-left:auto;max-width:76%;background:var(--orange-soft);border:1px solid #ffd7bc;border-radius:14px;padding:14px 16px;font-weight:800;text-align:right}.ai-response{margin-top:18px;display:grid;grid-template-columns:1fr 190px;gap:14px}.answer{background:#f7f8f9;border:1px solid var(--line);border-radius:14px;padding:18px}.answer h3{margin:0 0 10px;font-size:14px}.answer ol{margin:0;padding-left:20px;font-size:13px;line-height:1.55}.evidence{background:var(--dark);color:#fff;border-radius:14px;padding:18px}.evidence b{color:#ff9a52;font-size:10px;letter-spacing:.11em}.evidence p{font-size:12px;line-height:1.45;color:#e0e5e8}
+.process{display:flex;align-items:center;gap:7px;flex-wrap:nowrap}.step{padding:10px 9px;background:#f4f6f7;border:1px solid var(--line);border-radius:9px;font-size:10px;font-weight:800;min-width:72px;text-align:center}.step.focus{background:var(--orange-soft);border-color:#ffd7bc;color:var(--orange)}.arrow{color:var(--platinum);font-weight:900}.queue{margin-top:24px}.qrow{display:grid;grid-template-columns:180px 1fr 32px;gap:10px;align-items:center;margin:11px 0;font-size:12px}.track{height:8px;border-radius:999px;background:#e9ecee;overflow:hidden}.fill{height:100%}.note-dark{background:var(--dark);color:#fff;border-radius:16px;padding:22px}.note-dark h3{margin:0 0 15px;color:#ff9a52;font-size:11px;letter-spacing:.1em;text-transform:uppercase}.note-dark ul{margin:0;padding-left:18px;line-height:1.8;font-size:13px}
+.stock-row{display:grid;grid-template-columns:100px 1fr 140px;gap:12px;align-items:center;margin:18px 0}.stock-row b{font-size:13px}.stock-row span{font-size:12px;font-weight:800}.flag{background:#fff8f2;border:1px solid #ffd7bc;border-radius:14px;padding:18px}.flag b{font-size:10px;color:var(--orange);letter-spacing:.1em}.flag p{font-size:13px;line-height:1.45;margin:9px 0}
+.question{background:var(--orange-soft);border:1px solid #ffd7bc;border-radius:13px;padding:15px 17px;font-weight:800}.source-answer{margin-top:18px;font-size:14px;line-height:1.5}.source-card{margin-top:15px;background:#f5f7f8;border:1px solid var(--line);border-radius:10px;padding:12px 14px;font-size:11px;font-weight:800;color:var(--blue)}.cannot{background:#303b41;border:1px solid #49545a;color:#fff;border-radius:13px;padding:20px;font-family:Georgia,serif;font-style:italic;text-align:center;font-size:16px;line-height:1.35}
+.timeline{display:grid;grid-template-columns:repeat(5,1fr);gap:12px}.phase{border:1px solid var(--line);background:#fff;border-radius:15px;padding:17px;min-height:148px}.phase:first-child{background:var(--orange-soft);border-color:#ffd7bc}.phase small{display:block;color:var(--slate);font-weight:900}.phase b{display:block;margin-top:14px;color:var(--ink);font-size:13px}.phase:first-child b{color:var(--orange)}.phase p{font-size:11px;line-height:1.45;color:var(--slate)}
+.closing{margin-top:22px;background:var(--dark);color:#fff;padding:18px;border-radius:13px}.closing b{color:#ff9a52;font-size:10px;letter-spacing:.08em}.closing strong{display:block;margin-top:7px;font-size:16px}.quote{background:var(--dark);color:#fff;border-radius:20px;padding:42px;box-shadow:var(--shadow)}.quote em{display:block;font-family:Georgia,serif;font-size:44px;color:var(--orange);line-height:.5}.quote strong{display:block;font-size:31px;line-height:1.15;margin-top:14px}.quote p{color:#d8dee1;line-height:1.5;font-size:13px}
+.controls{max-width:1500px;width:100%;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:14px}.progress{display:flex;align-items:center;gap:12px}.track2{height:6px;background:#d7dde0;border-radius:999px;overflow:hidden;flex:1}.bar2{height:100%;width:12.5%;background:var(--orange);transition:.25s}.counter{font-size:11px;font-weight:800;color:var(--slate);min-width:45px}.control-group{display:flex;gap:8px}.icon{border:1px solid var(--line);background:#fff;color:var(--ink);border-radius:10px;height:40px;min-width:44px;padding:0 13px;font-weight:800;cursor:pointer}.voice-state{text-align:right;font-size:11px;font-weight:800;color:var(--slate)}
+@media(max-width:900px){body{overflow:auto}.shell{height:auto;min-height:100vh}.deck{min-height:1050px}.stage,.stage.cover{grid-template-columns:1fr;padding:34px 28px 98px}.visual{min-height:360px}.metric-grid{grid-template-columns:1fr 1fr}.timeline{grid-template-columns:1fr}.controls{position:sticky;bottom:8px;background:#eef1f3;padding:8px;border-radius:13px}.lead{font-size:16px}h1{font-size:44px}h2{font-size:34px}.demo-tag{display:none}}
+</style>
+</head>
+<body>
+<div class="shell">
+<header class="topbar">
+  <div class="brand"><strong>Clinix</strong><span>HEALTH GROUP</span></div>
+  <div class="demo-tag">Private concept demonstration</div>
+</header>
+<main class="deck" id="deck">
+  <article class="stage cover active" data-title="Welcome" data-narration="This is a short concept walkthrough for Clinix. It is intentionally not presented as a live Clinix system. The purpose is to show what an intelligence layer could look like after discovery, technical verification and governance approval. The core principle is simple: we verify it before we promise it.">
+    <div><p class="eyebrow">ARCVERSE for Clinix</p><h1>Clinix<br>Intelligence</h1><p class="lead">A proposed AI-enabled healthcare management, operations and information platform.</p><p class="small"><b>Prepared for Dr Manyangane Raymond Billa</b></p><div class="pill-row"><span class="pill orange">DISCOVER</span><span class="pill">VERIFY</span><span class="pill">DEMONSTRATE</span><span class="pill">PILOT</span><span class="pill">MEASURE</span></div><button class="primary" id="startVoice">▶ Start voice walkthrough</button><button class="secondary" id="startManual">Explore without voice</button></div>
+    <div class="visual"><div class="quote"><em>“</em><strong>We verify it before we promise it.</strong><p>Every capability shown is either demonstration-only, proposed or integration-dependent until Clinix systems and data access are verified.</p></div></div>
+  </article>
+  <article class="stage" data-title="Why Clinix" data-narration="Clinix already operates at meaningful scale. The value proposition is therefore not another isolated application. It is the possibility of creating a controlled intelligence layer across approved information. Public Clinix figures list eight hospitals, more than one thousand five hundred beds, more than three hundred doctors and one thousand two hundred and eighty nine staff.">
+    <div><p class="eyebrow">Stage 2 · Why explore this</p><h2>Scale creates an information challenge</h2><p class="lead">The opportunity is a governed layer that helps authorised people see, understand and investigate approved information.</p><div class="pill-row"><span class="pill orange">CONTROLLED</span><span class="pill">AUTHORISED</span><span class="pill">APPROVED</span><span class="pill">MEASURED</span></div></div>
+    <div class="visual"><div class="glass"><div class="bar"><span>Public Clinix scale</span><span>Current website figures</span></div><div class="screen"><div class="metric-grid"><div class="metric"><b>Hospitals</b><strong style="color:var(--orange)">8</strong></div><div class="metric"><b>Beds</b><strong style="color:var(--orange)">1,500+</strong></div><div class="metric"><b>Doctors</b><strong style="color:var(--orange)">300+</strong></div><div class="metric"><b>Staff</b><strong style="color:var(--orange)">1,289</strong></div></div><div class="ai-summary"><b>THE PROPOSED VALUE</b><p>Bring approved information together → make exceptions visible → let authorised people ask questions → keep human accountability.</p></div></div></div></div>
+  </article>
+  <article class="stage" data-title="Executive Intelligence" data-narration="This first screen shows the executive concept. The numbers are deliberately synthetic. If Clinix approves a pilot and we successfully connect approved data sources, a director could have one place to see selected indicators and exceptions. Until those integrations are verified, this remains a demonstration design.">
+    <div><p class="eyebrow">Stage 3 · Executive Intelligence</p><h2>One view of what may need attention</h2><p class="lead">A sample management view using synthetic data. This is a design concept, not a live Clinix dashboard.</p><div class="pill-row"><span class="pill orange">SYNTHETIC DEMO DATA</span><span class="pill">PROPOSED CAPABILITY</span></div></div>
+    <div class="visual"><div class="glass"><div class="bar"><span>Executive Overview</span><span>Demo · 08:00</span></div><div class="screen"><div class="metric-grid"><div class="metric"><b><i class="dot green"></i>Occupancy</b><strong>81%</strong><small>Demo threshold 85%</small></div><div class="metric"><b><i class="dot amber"></i>Claims to review</b><strong>143</strong><small>Admin queue</small></div><div class="metric"><b><i class="dot red"></i>Stock alerts</b><strong>12</strong><small>Below threshold</small></div><div class="metric"><b><i class="dot red"></i>Open incidents</b><strong>2</strong><small>High priority</small></div></div><div class="ai-summary"><b>AI SUMMARY</b><p>Three items appear to require management attention in this synthetic example: pharmacy stock thresholds, the claims review queue and two unresolved high-priority incidents.</p></div></div></div></div>
+  </article>
+  <article class="stage" data-title="Ask Clinix AI" data-narration="The second screen is the central interaction. The director asks a normal question. The system answers only from approved connected information. Where the information is insufficient, it should say so. Important answers should be traceable to their source, and permissions determine what each user is allowed to see.">
+    <div><p class="eyebrow">Stage 4 · Ask Clinix AI</p><h2>Questions over approved information</h2><p class="lead">The point is not a chatbot. The point is a controlled question-and-answer layer over information Clinix has approved for that user.</p><div class="pill-row"><span class="pill orange">SOURCE-GROUNDED</span><span class="pill">PERMISSIONED</span><span class="pill">AUDITABLE</span></div></div>
+    <div class="visual"><div class="glass"><div class="bar"><span>Ask Clinix AI</span><span>Synthetic example</span></div><div class="screen"><div class="ask-user">What requires management attention today?</div><div class="ai-response"><div class="answer"><h3>In this synthetic example, three areas warrant review:</h3><ol><li>12 stock items are below the configured threshold.</li><li>143 claims are in the administrative review queue.</li><li>Two high-priority incidents remain unresolved.</li></ol></div><div class="evidence"><b>EVIDENCE</b><p>Important answers should point back to an approved source, or state that the answer cannot be established.</p></div></div></div></div></div>
+  </article>
+  <article class="stage" data-title="Revenue-cycle Intelligence" data-narration="This example shows how revenue cycle information could be made easier to investigate if the relevant administrative data is available and can be integrated. ARCVERSE is not claiming a current medical aid integration, automatic claim correction or guaranteed recovery. The first step would be to verify what systems Clinix uses and what data can be accessed securely.">
+    <div><p class="eyebrow">Stage 5 · Revenue cycle</p><h2>Understand why items are outstanding</h2><p class="lead">A proposed analytical view over approved administrative data — not a claim of current medical-aid integration.</p><div class="pill-row"><span class="pill orange">INTEGRATION-DEPENDENT</span><span class="pill">NO SAVINGS GUARANTEE</span></div></div>
+    <div class="visual"><div class="glass"><div class="bar"><span>Example process</span><span>Synthetic demo</span></div><div class="screen"><div class="process"><span class="step">Admission</span><span class="arrow">›</span><span class="step">Authorisation</span><span class="arrow">›</span><span class="step">Billing</span><span class="arrow">›</span><span class="step">Claim</span><span class="arrow">›</span><span class="step focus">Review</span><span class="arrow">›</span><span class="step">Payment</span></div><div class="queue"><div class="qrow"><span>Missing authorisation</span><div class="track"><div class="fill" style="width:100%;background:var(--red)"></div></div><b>54</b></div><div class="qrow"><span>Coding query</span><div class="track"><div class="fill" style="width:70%;background:var(--amber)"></div></div><b>38</b></div><div class="qrow"><span>Supporting document</span><div class="track"><div class="fill" style="width:57%;background:var(--blue)"></div></div><b>31</b></div><div class="qrow"><span>Payer response pending</span><div class="track"><div class="fill" style="width:37%;background:var(--platinum)"></div></div><b>20</b></div></div></div></div></div>
+  </article>
+  <article class="stage" data-title="Pharmacy Intelligence" data-narration="Pharmacy is a useful example because the system can surface information without replacing professional responsibility. If Clinix has suitable stock and purchasing data, the platform could flag thresholds and comparisons. It would not autonomously move medicines, buy stock or override pharmacy controls.">
+    <div><p class="eyebrow">Stage 6 · Pharmacy Intelligence</p><h2>Surface stock risk sooner</h2><p class="lead">A proposed view that helps qualified staff see inventory risk. Decisions remain with authorised Clinix personnel.</p><div class="pill-row"><span class="pill orange">PROPOSED CAPABILITY</span><span class="pill">HUMAN DECISION</span></div></div>
+    <div class="visual"><div class="glass"><div class="bar"><span>Example stock visibility</span><span>Synthetic demo</span></div><div class="screen"><div class="stock-row"><b>Facility A</b><div class="track"><div class="fill" style="width:18%;background:var(--red)"></div></div><span style="color:var(--red)">3 days cover</span></div><div class="stock-row"><b>Facility B</b><div class="track"><div class="fill" style="width:72%;background:var(--green)"></div></div><span style="color:var(--green)">17 days cover</span></div><div class="stock-row"><b>Facility C</b><div class="track"><div class="fill" style="width:49%;background:var(--amber)"></div></div><span style="color:var(--amber)">11 days cover</span></div><div class="flag"><b>SYSTEM FLAG</b><p>Facility A appears below the configured threshold while another facility has greater cover.</p><p><strong>Suggested next step:</strong> ask an authorised pharmacy professional to review whether a transfer or purchase is appropriate.</p></div></div></div></div>
+  </article>
+  <article class="stage" data-title="Knowledge Assistant" data-narration="The knowledge assistant may be a practical first pilot because it can begin with a controlled set of approved documents. The system should cite the source used and, just as importantly, should say when the answer cannot be established. That is a fundamental safety and governance behaviour.">
+    <div><p class="eyebrow">Stage 7 · Knowledge Assistant</p><h2>Answer from approved documents</h2><p class="lead">A potentially lower-risk first use case: controlled internal knowledge with source-grounded answers.</p><div class="pill-row"><span class="pill orange">SOURCE REQUIRED</span><span class="pill">NO INVENTED POLICY</span></div></div>
+    <div class="visual"><div class="glass"><div class="bar"><span>Clinix Knowledge Assistant</span><span>Demo document set</span></div><div class="screen"><div class="question">What is the approved escalation process for a high-priority incident?</div><div class="source-answer"><b>Source-grounded answer:</b><br>The assistant summarises only what is contained in the approved source set, then links the user to the governing policy or procedure.</div><div class="source-card">Source: Incident Management Policy · Section 4.2 · Version 3.1</div><div class="cannot" style="margin-top:17px">“I cannot establish that from the approved information available to me.”</div></div></div></div>
+  </article>
+  <article class="stage" data-title="Next Step" data-narration="The recommended next step is not a major technology commitment. It is a focused discovery discussion to identify one high value problem, verify the systems and data behind it, then build a controlled demonstration. If the demonstration proves useful, we move to a measured pilot. If it does not, we do not force a rollout.">
+    <div><p class="eyebrow">Stage 8 · Recommended next step</p><h2>Start small. Prove value. Scale only what works.</h2><p class="lead">Earn the right to expand through a controlled discovery and pilot process.</p><div class="pill-row"><span class="pill orange">WE VERIFY IT BEFORE WE PROMISE IT</span></div></div>
+    <div class="visual"><div style="width:100%"><div class="timeline"><div class="phase"><small>01</small><b>DISCOVER</b><p>Priorities, workflows, systems and governance.</p></div><div class="phase"><small>02</small><b>VERIFY</b><p>Data, APIs, permissions, security and feasibility.</p></div><div class="phase"><small>03</small><b>DEMONSTRATE</b><p>Build only agreed functionality with safe demo data.</p></div><div class="phase"><small>04</small><b>PILOT</b><p>One defined use case, department or facility.</p></div><div class="phase"><small>05</small><b>MEASURE</b><p>Compare actual results against an agreed baseline.</p></div></div><div class="closing"><b>PROPOSED FIRST DISCUSSION</b><strong>Which single Clinix problem would be most valuable to solve first — and what systems hold the information needed to solve it?</strong></div></div></div>
+  </article>
+</main>
+<nav class="controls"><div class="progress"><div class="track2"><div class="bar2" id="progressBar"></div></div><span class="counter" id="counter">1 / 8</span></div><div class="control-group"><button class="icon" id="backBtn">←</button><button class="icon" id="replayBtn">↻</button><button class="icon" id="pauseBtn">Pause</button><button class="icon" id="nextBtn">→</button><button class="icon" id="stopBtn">Stop</button></div><div class="voice-state" id="voiceState">Manual mode</div></nav>
+</div>
+<script>
+(()=>{
+ const stages=[...document.querySelectorAll('.stage')],
+       bar=document.getElementById('progressBar'),
+       counter=document.getElementById('counter'),
+       voiceState=document.getElementById('voiceState'),
+       pauseBtn=document.getElementById('pauseBtn');
+
+ const voiceUrls=[
+  'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/8c07e686-d6a3-4bd8-b7d2-0034a9a1f4be.mp3',
+  'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/2ae534b6-01eb-46e2-84e3-b697b67c8020.mp3',
+  'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/d59eb755-c141-490e-beac-ee2dd47409ee.mp3',
+  'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/b110b12a-3278-47d6-ad84-2f36a784b89c.mp3',
+  'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/7b3b54d5-605f-4a16-a91e-907ba218ebde.mp3',
+  'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/9166aae7-6c8b-4d69-bfda-2c66a0fd69bd.mp3',
+  'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/44a8e07e-73b9-4841-8d76-314fdb82c376.mp3',
+  'https://storage.googleapis.com/adm--audio-playback--7d--public/mcp-preview/af1f2913-c0ea-473c-bfdc-8654e09977a5.mp3'
+ ];
+
+ let index=0, voiceMode=false, currentAudio=null;
+
+ function stopAudio(){
+   if(!currentAudio) return;
+   currentAudio.onended=null;
+   currentAudio.pause();
+   try{currentAudio.currentTime=0}catch(e){}
+   currentAudio=null;
+ }
+
+ function setStage(i,play=true){
+   if(i<0||i>=stages.length)return;
+   stopAudio();
+   stages[index].classList.remove('active');
+   index=i;
+   stages[index].classList.add('active');
+   bar.style.width=((index+1)/stages.length*100)+'%';
+   counter.textContent=`${index+1} / ${stages.length}`;
+   pauseBtn.textContent='Pause';
+   if(voiceMode&&play) playCurrent();
+ }
+
+ function playCurrent(){
+   stopAudio();
+   const url=voiceUrls[index];
+   if(!url){voiceState.textContent='Voice unavailable';return;}
+   currentAudio=new Audio(url);
+   currentAudio.preload='auto';
+   currentAudio.onplay=()=>voiceState.textContent='Voice narration';
+   currentAudio.onended=()=>{
+     voiceState.textContent='Voice narration';
+     currentAudio=null;
+     if(voiceMode&&index<stages.length-1) setTimeout(()=>setStage(index+1,true),650);
+   };
+   currentAudio.onerror=()=>voiceState.textContent='Use Replay to continue';
+   currentAudio.play().catch(()=>voiceState.textContent='Press Replay to start voice');
+ }
+
+ function startVoice(){
+   voiceMode=true;
+   voiceState.textContent='Voice narration';
+   setStage(0,true);
+ }
+
+ function startManual(){
+   voiceMode=false;
+   stopAudio();
+   voiceState.textContent='Manual mode';
+   setStage(0,false);
+ }
+
+ document.getElementById('startVoice').onclick=startVoice;
+ document.getElementById('startManual').onclick=startManual;
+ document.getElementById('nextBtn').onclick=()=>setStage(index+1,voiceMode);
+ document.getElementById('backBtn').onclick=()=>setStage(index-1,voiceMode);
+ document.getElementById('replayBtn').onclick=()=>{voiceMode=true;playCurrent()};
+
+ pauseBtn.onclick=()=>{
+   if(!voiceMode||!currentAudio)return;
+   if(currentAudio.paused){
+     currentAudio.play();
+     pauseBtn.textContent='Pause';
+   }else{
+     currentAudio.pause();
+     pauseBtn.textContent='Resume';
+   }
+ };
+
+ document.getElementById('stopBtn').onclick=()=>{
+   voiceMode=false;
+   stopAudio();
+   pauseBtn.textContent='Pause';
+   voiceState.textContent='Manual mode';
+ };
+
+ document.addEventListener('keydown',e=>{
+   if(e.key==='ArrowRight')setStage(index+1,voiceMode);
+   if(e.key==='ArrowLeft')setStage(index-1,voiceMode);
+   if(e.key===' '){e.preventDefault();pauseBtn.click()}
+ });
+
+ setStage(0,false);
+})();
+</script>
+</body>
+</html>
