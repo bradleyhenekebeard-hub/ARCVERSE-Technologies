@@ -225,3 +225,60 @@ html.intro-pending{overflow:hidden}
     height:72px;
   }
 }
+
+
+/* ARCVERSE approved symbol treatment — 2026-09-28 */
+.brand{
+  gap:14px;
+}
+.brand-emblem{
+  width:68px;
+  height:68px;
+  border-radius:50%;
+  background-image:url('arcverse-symbol.webp?v=20260928a');
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center;
+  box-shadow:0 0 24px rgba(93,201,255,.28);
+  border:1px solid rgba(133,221,255,.2);
+}
+.brand-word{
+  display:none;
+}
+.intro-art{
+  width:min(520px,70vw);
+  aspect-ratio:1/1;
+  top:48%;
+  background-image:url('arcverse-symbol.webp?v=20260928a');
+  background-size:cover;
+  background-repeat:no-repeat;
+  background-position:center;
+  border-radius:50%;
+  -webkit-mask-image:none;
+  mask-image:none;
+  filter:drop-shadow(0 0 46px rgba(56,159,255,.45));
+}
+.hero-home{
+  padding-top:44px;
+}
+.hero-art{
+  width:min(430px,72vw);
+  margin:0 auto 22px;
+  filter:drop-shadow(0 0 42px rgba(54,139,255,.28));
+  animation:floatHero 8s ease-in-out infinite;
+}
+.hero-art img{
+  width:100%;
+  display:block;
+  border-radius:50%;
+  -webkit-mask-image:none;
+  mask-image:none;
+}
+.home-intro{
+  margin:0 auto;
+}
+@media(max-width:650px){
+  .brand-emblem{width:54px;height:54px}
+  .intro-art{width:76vw;top:47%}
+  .hero-art{width:min(320px,78vw);margin-bottom:18px}
+}
