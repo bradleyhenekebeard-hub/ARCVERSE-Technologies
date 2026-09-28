@@ -23,7 +23,7 @@ a{color:inherit;text-decoration:none} img{display:block;max-width:100%}.containe
 .nav{position:sticky;top:0;z-index:100;background:rgba(2,7,16,.74);backdrop-filter:blur(20px);border-bottom:1px solid rgba(255,255,255,.07)}
 .nav-inner{min-height:100px;display:flex;align-items:center;justify-content:space-between;gap:28px}
 .brand{display:flex;align-items:center;gap:16px;min-width:max-content}
-.brand-emblem{width:74px;height:74px;border-radius:50%;background-image:url('arcverse-brand.png');background-size:210px auto;background-repeat:no-repeat;background-position:-69px -3px;box-shadow:0 0 26px rgba(93,201,255,.36);border:1px solid rgba(133,221,255,.25)}
+.brand-emblem{width:74px;height:74px;border-radius:50%;background-image:url('arcverse-brand-new.webp');background-size:210px auto;background-repeat:no-repeat;background-position:-69px -3px;box-shadow:0 0 26px rgba(93,201,255,.36);border:1px solid rgba(133,221,255,.25)}
 .brand-word{font-size:24px;font-weight:800;letter-spacing:.24em;text-shadow:0 0 22px rgba(107,204,255,.18)}
 .nav-links{display:flex;align-items:center;gap:24px;color:#c7d5e8;font-size:.96rem}.nav-links a{transition:.2s}.nav-links>a:hover{color:white}
 .btn,.btn-ghost{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:14px 22px;border-radius:999px;font-weight:750;border:1px solid transparent;transition:.25s ease}
@@ -102,7 +102,7 @@ html.intro-pending{overflow:hidden}
 .intro-horizon{position:absolute;width:125vw;height:55vh;bottom:-37vh;left:-12vw;border-radius:50% 50% 0 0;background:radial-gradient(ellipse at 50% 8%,rgba(100,183,255,.23),transparent 60%);border-top:1px solid rgba(148,226,255,.85);box-shadow:0 -17px 80px rgba(69,164,255,.3),0 -2px 18px rgba(132,226,255,.5);opacity:0;animation:intro-horizon 3.6s ease both}
 /* The original image file remains unaltered. This viewport only displays its top 69%,
    precisely before the AR C V E R S E lettering starts in the source image. */
-.intro-art{position:absolute;width:min(1190px,172vw);aspect-ratio:675/239;left:50%;top:44%;background-image:url('arcverse-brand.png');background-size:100% auto;background-repeat:no-repeat;background-position:center top;filter:drop-shadow(0 0 35px rgba(56,159,255,.35));-webkit-mask-image:radial-gradient(ellipse 56% 80% at 50% 45%,black 49%,transparent 78%);mask-image:radial-gradient(ellipse 56% 80% at 50% 45%,black 49%,transparent 78%);transform:translate(-170%,-52%) scale(.56) rotate(-6deg);opacity:0;animation:intro-arrive 3.6s cubic-bezier(.16,.7,.15,1) both;will-change:transform,opacity}
+.intro-art{position:absolute;width:min(760px,88vw);aspect-ratio:1/1;left:50%;top:50%;background-image:url('arcverse-brand-new.webp');background-size:contain;background-repeat:no-repeat;background-position:center;filter:drop-shadow(0 0 42px rgba(56,159,255,.42));transform:translate(-170%,-50%) scale(.56) rotate(-6deg);opacity:0;animation:intro-arrive 3.6s cubic-bezier(.16,.7,.15,1) both;will-change:transform,opacity}
 .intro-energy{position:absolute;left:-45%;right:-45%;height:2px;top:52%;opacity:0;transform:rotate(-8deg);background:linear-gradient(90deg,transparent,#73deff 36%,#fefefe 50%,#8fc7ff 64%,transparent);box-shadow:0 0 35px 7px rgba(100,200,255,.55);animation:intro-energy 3.6s ease-out both}
 .intro-flash{position:absolute;inset:0;opacity:0;background:radial-gradient(ellipse at 50% 49%,rgba(255,255,255,.99),rgba(134,216,255,.5) 15%,transparent 72%);animation:intro-flash 3.6s ease-out both;pointer-events:none}
 .intro-message{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:13px;padding:20px;background:linear-gradient(180deg,transparent 8%,rgba(0,8,20,.58) 49%,transparent 91%);opacity:0;transform:translateY(24px);animation:intro-message 3.6s ease both;text-shadow:0 0 40px rgba(0,0,0,.85)}
@@ -113,11 +113,11 @@ html.intro-pending{overflow:hidden}
 .intro-skip:hover,.intro-skip:focus-visible{border-color:#fff;background:rgba(23,89,144,.75)}
 @keyframes intro-stars{0%{transform:translateX(-20px);opacity:.1}35%{opacity:.8}100%{transform:translateX(14px);opacity:.45}}
 @keyframes intro-horizon{0%,13%{opacity:0;transform:translateY(35px)}46%,85%{opacity:1;transform:none}100%{opacity:.7}}
-@keyframes intro-arrive{0%,6%{opacity:0;transform:translate(-170%,-52%) scale(.56) rotate(-6deg)}32%{opacity:1}48%{transform:translate(-50%,-52%) scale(1.01) rotate(0)}72%{opacity:1;transform:translate(-50%,-52%) scale(1.06)}100%{opacity:.25;transform:translate(-50%,-52%) scale(1.18)}}
+@keyframes intro-arrive{0%,6%{opacity:0;transform:translate(-170%,-50%) scale(.56) rotate(-6deg)}32%{opacity:1}48%{transform:translate(-50%,-50%) scale(1.01) rotate(0)}72%{opacity:1;transform:translate(-50%,-50%) scale(1.04)}100%{opacity:.22;transform:translate(-50%,-50%) scale(1.12)}}
 @keyframes intro-energy{0%,28%{opacity:0;transform:translateX(-45%) rotate(-8deg)}46%{opacity:1;transform:translateX(0) rotate(-8deg)}65%,100%{opacity:0;transform:translateX(50%) rotate(-8deg)}}
 @keyframes intro-flash{0%,42%{opacity:0}51%{opacity:.95}61%,100%{opacity:0}}
 @keyframes intro-message{0%,52%{opacity:0;transform:translateY(24px)}67%,91%{opacity:1;transform:none}100%{opacity:1;transform:translateY(-3px)}}
-@media(max-width:650px){.intro-art{width:192vw;top:43%}.intro-message strong{font-size:clamp(24px,7vw,40px);letter-spacing:.055em}.intro-overline,.intro-subline{letter-spacing:.19em}.intro-message{gap:16px}.intro-horizon{bottom:-42vh}}
+@media(max-width:650px){.intro-art{width:92vw;top:49%}.intro-message strong{font-size:clamp(24px,7vw,40px);letter-spacing:.055em}.intro-overline,.intro-subline{letter-spacing:.19em}.intro-message{gap:16px}.intro-horizon{bottom:-42vh}}
 @media(prefers-reduced-motion:reduce){.intro-overlay{display:none!important}.intro-art,.intro-stars,.intro-flash,.intro-energy,.intro-horizon,.intro-message{animation:none!important}}
 
 /* Full-size visual installations replace generic line icons. */
@@ -208,7 +208,7 @@ html.intro-pending{overflow:hidden}
   width:92px;
   height:92px;
   border-radius:0;
-  background-image:url('arcverse-brand.png');
+  background-image:url('arcverse-brand-new.webp');
   background-size:contain;
   background-repeat:no-repeat;
   background-position:center;
