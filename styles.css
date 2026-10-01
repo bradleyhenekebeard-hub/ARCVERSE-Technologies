@@ -282,3 +282,27 @@ html.intro-pending{overflow:hidden}
   .intro-art{width:76vw;top:47%}
   .hero-art{width:min(320px,78vw);margin-bottom:18px}
 }
+
+
+/* INDUSTRY SHOWCASE — October 2026 */
+.industry-showcase{padding-top:82px;background:radial-gradient(ellipse at 50% 22%,rgba(67,137,255,.12),transparent 62%)}
+.industry-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:18px}
+.industry-card{position:relative;min-height:440px;padding:24px 22px 22px;display:flex;flex-direction:column;align-items:center;text-align:center;overflow:hidden;border:1px solid var(--line);border-radius:28px;background:linear-gradient(155deg,rgba(14,34,63,.9),rgba(4,12,27,.96));box-shadow:var(--glow);transition:transform .28s ease,border-color .28s ease,box-shadow .28s ease}
+.industry-card:before{content:"";position:absolute;inset:auto -30% -55% -30%;height:70%;background:radial-gradient(ellipse,rgba(65,147,255,.16),transparent 66%);pointer-events:none}
+.industry-card:hover{transform:translateY(-6px);border-color:var(--line2);box-shadow:0 24px 75px rgba(40,120,255,.18),inset 0 1px rgba(255,255,255,.05)}
+.industry-logo-wrap{position:relative;width:100%;height:128px;display:flex;align-items:center;justify-content:center;margin-bottom:18px;padding:14px;border:1px solid rgba(142,219,255,.16);border-radius:20px;background:rgba(255,255,255,.94);overflow:hidden}
+.industry-logo-wrap img{max-width:100%;max-height:100%;object-fit:contain;transition:transform .28s ease}
+.industry-card:hover .industry-logo-wrap img{transform:scale(1.035)}
+.industry-logo-blaq{background:radial-gradient(circle at 50% 50%,rgba(211,166,48,.11),rgba(0,0,0,.88) 72%)}
+.industry-sector{font-size:.70rem;line-height:1.45;letter-spacing:.17em;text-transform:uppercase;color:var(--cyan);font-weight:800}
+.industry-card h3{font-size:1.18rem;margin:12px auto 10px;min-height:2.8em;display:flex;align-items:center}
+.industry-card h3 a:hover{color:var(--cyan)}
+.industry-card p{margin:0;color:var(--muted);line-height:1.65;font-size:.92rem}
+.industry-status{margin-top:auto;padding-top:18px;font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:#d8f7ff;font-weight:850}
+.industry-status:before{content:"";display:inline-block;width:7px;height:7px;margin-right:8px;border-radius:50%;background:#7ce9ff;box-shadow:0 0 14px #7ce9ff}
+.industry-proof{max-width:970px;margin:30px auto 0;padding:30px 34px;text-align:center;border:1px solid rgba(126,207,255,.2);border-radius:24px;background:linear-gradient(135deg,rgba(12,35,66,.64),rgba(4,12,27,.78));box-shadow:inset 0 1px rgba(255,255,255,.035)}
+.industry-proof h3{font-size:clamp(1.45rem,2.2vw,2rem);margin:8px auto 12px}
+.industry-proof>p:not(.kicker){max-width:800px;margin:0 auto;color:var(--muted);line-height:1.75}
+.industry-proof strong{color:#eefcff}
+@media(max-width:1040px){.industry-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.industry-grid{grid-template-columns:1fr}.industry-card{min-height:auto}.industry-logo-wrap{height:112px}.industry-card h3{min-height:0}.industry-status{margin-top:18px}.industry-proof{padding:25px 20px}}
