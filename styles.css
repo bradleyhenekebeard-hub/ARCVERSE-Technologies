@@ -303,3 +303,10 @@ html.intro-pending{overflow:hidden}
 @media(max-width:1050px){.industry-grid{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:650px){.industry-grid{grid-template-columns:1fr}.industry-card{min-height:auto}.industry-logo{height:108px}.industry-message{padding:24px 18px}}
 @media(prefers-reduced-motion:reduce){.industry-card{transition:none}.industry-card:hover{transform:none}}
+
+/* ARCVERSE core brand tagline */
+
+.intro-tagline{font-size:clamp(11px,1.35vw,17px);letter-spacing:.28em;color:#eef8ff;font-weight:800}
+.intro-tagline b{color:#88e8ff;font-weight:900}
+.brand-tagline{text-transform:none!important;font-size:clamp(.82rem,1.4vw,1.05rem);letter-spacing:.2em!important;color:#eef8ff!important;margin-bottom:18px!important}
+.brand-tagline span{background:linear-gradient(90deg,#8eeaff,#8f8cff);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900}
