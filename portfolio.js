@@ -6,7 +6,7 @@
   const home = main.querySelector('#solutions');
   const websites = document.title.includes('Websites & Branding');
   const placement = websites ? main.querySelector('#presence') : home;
-  if (!placement) return;
+  if (!placement || !websites) return;
   const styles = document.createElement('style');
   styles.textContent = `
     .arc-portfolio-section{background:radial-gradient(ellipse at 50% 50%,rgba(43,109,216,.15),transparent 68%);border-block:1px solid rgba(119,215,255,.12)}
