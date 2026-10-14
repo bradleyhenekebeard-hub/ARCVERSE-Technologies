@@ -29,7 +29,7 @@
     menu.querySelectorAll('a').forEach(a=>a.addEventListener('click',closeMenu));
     document.addEventListener('keydown',e=>{if(e.key==='Escape') closeMenu()});
     document.addEventListener('click',e=>{if(!menu.contains(e.target)&&!toggle.contains(e.target)) closeMenu()});
-    window.addEventListener('resize',()=>{if(window.innerWidth>1190) closeMenu()});
+    window.addEventListener('resize',()=>{if(window.innerWidth>1400) closeMenu()});
   }
 
   // Remove the skip button entirely, while preserving the brief intro and automatic transition.
