@@ -134,3 +134,88 @@ html{scroll-padding-top:120px}
   .nav-links a:hover{background:rgba(111,223,255,.08)}
   .nav-links .btn-ghost{display:block;text-align:center;margin-top:4px}
 }
+
+
+/* Hero visual balance correction — 2026-10-14.
+   Root cause: global heading/kicker/copy centering overrode the left-column
+   hero, while align-items:center and excessive padding pushed the panel down.
+   Keep the two-line value proposition dominant without changing its message. */
+.solution-hero .home-intro .brand-tagline,
+.solution-hero .home-intro .hero-eyebrow,
+.solution-hero .home-intro h1,
+.solution-hero .home-intro .hero-copy {
+  text-align:left;
+}
+.solution-hero .home-intro h1 {
+  margin-left:0;
+  margin-right:0;
+  max-width:none;
+}
+.solution-hero .home-intro .hero-copy {
+  margin-left:0;
+  margin-right:0;
+}
+.solution-hero .home-intro .brand-tagline {
+  margin-top:0;
+  margin-left:0;
+  margin-right:0;
+}
+.solution-hero .home-intro .hero-eyebrow {
+  margin-top:12px;
+  margin-bottom:9px;
+}
+/* Crop the square background in the hero logo artwork to the round emblem. */
+.solution-hero .signal-logo {
+  width:104px;
+  height:104px;
+  object-fit:cover;
+  clip-path:circle(49% at 50% 50%);
+}
+@media (min-width:1021px) {
+  .hero-home.solution-hero {
+    padding-top:50px;
+    padding-bottom:72px;
+  }
+  .solution-hero-grid {
+    grid-template-columns:minmax(0,1.29fr) minmax(340px,.88fr);
+    column-gap:clamp(26px,3.3vw,48px);
+    align-items:start;
+  }
+  .solution-hero .hero-signal {
+    margin-top:69px;
+  }
+  .solution-hero .home-intro h1 {
+    font-size:clamp(2.9rem,4.03vw,4.3rem)!important;
+    line-height:1.12;
+  }
+}
+@media (max-width:1020px) {
+  .hero-home.solution-hero {
+    padding-top:46px;
+    padding-bottom:68px;
+  }
+  .solution-hero .home-intro h1 {
+    font-size:clamp(2.8rem,6.5vw,4.7rem)!important;
+    line-height:1.12;
+  }
+  .solution-hero-grid {
+    gap:36px;
+  }
+  .solution-hero .hero-signal {
+    max-width:640px;
+    margin:0;
+  }
+}
+@media (max-width:700px) {
+  .hero-home.solution-hero {
+    padding-top:38px;
+  }
+  .solution-hero .home-intro h1 {
+    font-size:clamp(2.45rem,10vw,3.35rem)!important;
+    line-height:1.12;
+  }
+  .hero-tags {
+    gap:8px;
+    flex-wrap:wrap;
+  }
+}
