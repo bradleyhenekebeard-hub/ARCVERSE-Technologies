@@ -122,3 +122,15 @@ html{scroll-padding-top:120px}
 @media(max-width:700px){.solution-hero{padding:75px 0 81px}.solution-hero h1,.solution-detail-hero h1{font-size:clamp(2.45rem,9.5vw,4.25rem)!important}.solution-detail-hero{padding:73px 0}.issue-grid,.path-grid,.pricing-grid,.responsible-grid,.sector-grid,.offering-grid,.example-cols,.terms-cols,.form-grid,.demo-preview{grid-template-columns:1fr}.footer-main{grid-template-columns:1fr 1fr}.form-actions button{width:100%}.challenge-form{padding:24px 18px}.pricing-teaser-inner{padding:27px 21px}.hero-signal{padding:23px}}
 @media(max-width:520px){.footer-main{grid-template-columns:1fr}.footer-bottom{flex-direction:column}.issue-card,.path-card,.price-card,.sector-card,.offering-card,.example-card{padding:23px}.process-step{gap:15px}.process-index{width:44px;height:44px}}
 @media(prefers-reduced-motion:reduce){.reveal{opacity:1;transform:none;transition:none}}
+
+/* Navigation must remain usable at intermediate laptop widths. */
+.nav .container{width:min(1440px,96%)}
+@media(max-width:1400px){
+  .nav-inner{position:relative}
+  .nav-toggle{display:flex;margin-left:auto}
+  .nav-links{display:none;position:absolute;top:calc(100% - 1px);left:0;right:0;z-index:90;max-height:calc(100vh - 100px);overflow-y:auto;overscroll-behavior:contain;padding:16px;background:rgba(3,12,27,.99);border:1px solid rgba(123,216,255,.26);border-radius:0 0 20px 20px;box-shadow:0 22px 55px rgba(0,0,0,.62);align-items:stretch;flex-direction:column;gap:3px}
+  .nav-links.menu-open{display:flex}
+  .nav-links a{display:block;padding:13px 14px;border-radius:10px}
+  .nav-links a:hover{background:rgba(111,223,255,.08)}
+  .nav-links .btn-ghost{display:block;text-align:center;margin-top:4px}
+}
