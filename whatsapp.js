@@ -3,8 +3,8 @@
   'use strict';
   const phone = '27764224935';
   const enquiries = {
-    general: 'Hi ARCVERSE, I would like to enquire about your services.',
-    business: 'Hi ARCVERSE, I would like more information about Business AI and to arrange a demonstration.',
+    general: 'Hi ARCVERSE, I would like to discuss a business problem and a practical solution.',
+    business: 'Hi ARCVERSE, I would like to discuss a targeted solution for my business challenge.',
     personal: 'Hi ARCVERSE, I would like more information about your home and personal finance application.',
     websites: 'Hi ARCVERSE, I am interested in a professional website and matching letterhead. Please send me more information.'
   };
@@ -48,7 +48,7 @@
     add(document.querySelector('#contact .actions'), 'general', 'Chat on WhatsApp');
   }
   let current = 'general';
-  if (document.title.includes('Business AI')) {
+  if (document.title.includes('Business Solutions')) {
     current = 'business';
     add(document.querySelector('.business-hero .actions'), current);
   } else if (document.title.includes('Personal Finance') || document.title.includes('KAYA in Action')) {
