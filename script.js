@@ -57,7 +57,7 @@
     });
   }
   if(document.querySelector('.hero-home')){
-    addKayaSignIn(document.querySelector('.hero-home .actions'),'btn-ghost');
+    // KAYA remains available from the dedicated finance page.
     const personalCard=[...document.querySelectorAll('.service-card')].find(card=>card.querySelector('.service-kicker')?.textContent.trim()==='Personal Finance');
     const body=personalCard?.querySelector('.service-body');
     if(body){
@@ -162,10 +162,12 @@
     update();
   });
 
-  // Load the separate pricing and client-terms module.
-  const pricingScript=document.createElement('script');
-  pricingScript.src='pricing.js';
-  document.body.appendChild(pricingScript);
+  // Service pricing is published in dedicated pricing.html, without injected packages.
+
+  // Enquiry preparation; requires the visitor to send from their own app.
+  if(document.getElementById('challenge-form')){
+    const intake=document.createElement('script');intake.src='contact-enquiry.js?v=20261014b';document.body.appendChild(intake);
+  }
 
   // Cloudflare Web Analytics for this ARCVERSE marketing site only (not the separate KAYA app).
   // The token is a public site identifier provided by Cloudflare's manual-install snippet.
