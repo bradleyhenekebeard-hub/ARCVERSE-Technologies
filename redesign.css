@@ -219,3 +219,127 @@ html{scroll-padding-top:120px}
     flex-wrap:wrap;
   }
 }
+
+
+/* 2026-10-14 structural correction: full-width headline ABOVE two columns.
+   Replaces the previous unsuccessful narrow-column heading workaround. */
+.hero-home.solution-hero{
+  padding:48px 0 78px;
+}
+.solution-hero .hero-headline{
+  display:block;
+  width:100%;
+  max-width:none;
+  margin:0 auto 38px;
+  text-align:center;
+}
+.solution-hero .hero-headline h1{
+  font-size:clamp(3rem,5.35vw,5.5rem)!important;
+  letter-spacing:-.055em;
+  line-height:1.06;
+  max-width:none;
+  margin:0;
+  text-align:center;
+  text-wrap:balance;
+}
+.solution-hero .solution-hero-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:clamp(32px,4vw,64px);
+  align-items:start;
+}
+.solution-hero .solution-hero-grid .home-intro{
+  max-width:none;
+  width:100%;
+  margin:0;
+  text-align:left;
+}
+.solution-hero .solution-hero-grid .hero-signal{
+  margin:0;
+  max-width:none;
+  align-self:start;
+}
+.solution-hero .home-intro .hero-eyebrow{
+  text-align:left;
+  margin:0 0 17px;
+}
+.solution-hero .home-intro .hero-promise{
+  text-align:left;
+  margin:0 0 15px;
+  max-width:640px;
+}
+.solution-hero .home-intro .hero-copy{
+  text-align:left;
+  margin:0;
+  max-width:640px;
+}
+.solution-hero .home-intro .brand-tagline{
+  text-align:left!important;
+  font-size:.86rem;
+  letter-spacing:.12em!important;
+  margin:20px 0 0!important;
+}
+/* The full navigation is the default on true desktop and laptop screens.
+   The earlier 1400px hamburger breakpoint was needlessly hiding links. */
+@media(min-width:1161px){
+  .nav .nav-inner{gap:12px}
+  .nav .nav-toggle{display:none}
+  .nav .nav-links{
+    display:flex;
+    position:static;
+    flex-direction:row;
+    align-items:center;
+    gap:clamp(6px,.82vw,13px);
+    padding:0;
+    border:0;
+    border-radius:0;
+    box-shadow:none;
+    background:transparent;
+    max-height:none;
+    overflow:visible;
+    min-width:0;
+    font-size:clamp(.8rem,1vw,.91rem);
+  }
+  .nav .nav-links a{
+    display:inline-flex;
+    padding:0;
+    white-space:nowrap;
+  }
+  .nav .nav-links .btn-ghost{
+    display:inline-flex;
+    padding:10px 13px;
+    margin:0;
+    white-space:nowrap;
+  }
+}
+@media(max-width:1160px){
+  .nav .nav-toggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .nav .nav-links{display:none}
+  .nav .nav-links.menu-open{display:flex}
+}
+@media(max-width:1020px){
+  .hero-home.solution-hero{padding-top:42px}
+  .solution-hero .solution-hero-grid{
+    grid-template-columns:1fr;
+    gap:28px;
+  }
+  .solution-hero .solution-hero-grid .hero-signal{
+    max-width:640px;
+  }
+  .solution-hero .hero-headline{margin-bottom:27px}
+  .solution-hero .hero-headline h1{
+    font-size:clamp(2.65rem,6.4vw,4.8rem)!important;
+  }
+}
+@media(max-width:700px){
+  .hero-home.solution-hero{padding-top:32px}
+  .solution-hero .hero-headline h1{
+    font-size:clamp(2.35rem,9.3vw,3.3rem)!important;
+    line-height:1.12;
+  }
+  .solution-hero .hero-headline{margin-bottom:25px}
+}
