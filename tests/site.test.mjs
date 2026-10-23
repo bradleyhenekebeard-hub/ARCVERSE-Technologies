@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { readFile } from 'node:fs/promises';
+import { access, readFile, readdir } from 'node:fs/promises';
 import test from 'node:test';
 
 const root = new URL('../', import.meta.url);
@@ -116,7 +116,7 @@ test('premium stylesheet keeps keyboard focus and reduced-motion behaviour expli
 
 test('shared stylesheet continues to cover established secondary-page components', async () => {
   const css = await read('redesign.css');
-  for (const selector of ['.solution-detail-hero', '.price-card', '.terms-panel', '.demo-preview', '.new-footer']) {
+  for (const selector of ['.solution-detail-hero', '.service-truth', '.price-card', '.terms-panel', '.demo-preview', '.new-footer']) {
     assert.match(css, new RegExp(selector.replace('.', '\\.')));
   }
 });
@@ -129,4 +129,37 @@ test('homepage presents one floating WhatsApp path without injecting a third her
 
   assert.equal(staticFloat + injectedFloat, 1, 'Exactly one floating WhatsApp implementation should be active');
   assert.doesNotMatch(whatsapp, /add\(document\.querySelector\('\.hero-home \.actions'\)/);
+});
+
+test('every marketing page that uses the premium system loads the current version', async () => {
+  const pages = ['index.html', 'business.html', 'personal.html', 'pricing.html', 'websites.html', 'kaya-walkthrough.html'];
+  for (const page of pages) {
+    const html = await read(page);
+    assert.match(html, /href=["']redesign\.css\?v=20261023a["']/i, `${page} has a stale premium stylesheet reference`);
+  }
+});
+
+test('root HTML pages do not link to missing local files', async () => {
+  const pages = (await readdir(root, { withFileTypes: true }))
+    .filter((entry) => entry.isFile() && entry.name.endsWith('.html'))
+    .map((entry) => entry.name);
+
+  for (const page of pages) {
+    const html = await read(page);
+    const hrefs = [...html.matchAll(/href=["']([^"']+)["']/gi)].map((match) => match[1]);
+    for (const href of hrefs) {
+      if (/^(?:[a-z]+:|\/\/|#)/i.test(href)) continue;
+      const target = decodeURIComponent(href.split(/[?#]/, 1)[0]);
+      if (!target) continue;
+      await assert.doesNotReject(access(new URL(target, root)), `${page} links to missing local file ${target}`);
+    }
+  }
+});
+
+test('enquiry helper prepares user-controlled drafts without background submission', async () => {
+  const script = await read('contact-enquiry.js');
+  assert.match(script, /preventDefault\(\)/);
+  assert.match(script, /mailto:/);
+  assert.match(script, /window\.open\(/);
+  assert.doesNotMatch(script, /\bfetch\s*\(|XMLHttpRequest|sendBeacon/i);
 });

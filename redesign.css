@@ -224,6 +224,9 @@ h2{font-size:clamp(2.25rem,4.3vw,4.45rem);line-height:1.02;letter-spacing:-.045e
 .solution-detail-hero h1{max-width:1060px;font-size:clamp(3rem,6vw,6rem);line-height:.97;letter-spacing:-.055em}
 .solution-detail-hero .hero-copy{max-width:780px}
 .hero-detail-inner{max-width:1160px}
+.service-truth{display:flex;flex-wrap:wrap;justify-content:center;gap:10px 22px;margin-top:20px;color:#9eafc1;font-size:.78rem;letter-spacing:.045em}
+.service-truth span{display:inline-flex;align-items:center;gap:8px}
+.service-truth span:before{content:"";width:5px;height:5px;border-radius:50%;background:var(--mint);box-shadow:0 0 12px rgba(139,227,193,.42)}
 .example-stack{display:grid;gap:20px}
 .example-card h3{font-size:clamp(1.5rem,2.2vw,2.05rem);margin:14px 0 23px}
 .example-cols{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:32px}
