@@ -89,3 +89,44 @@ test('homepage exposes canonical search and social metadata plus structured orga
   assert.match(html, /"@type"\s*:\s*"ProfessionalService"/i);
   assert.doesNotMatch(html, /"@type"\s*:\s*"Product"[\s\S]*VELA/i);
 });
+
+test('premium stylesheet defines the new responsive homepage components', async () => {
+  const css = await read('redesign.css');
+  for (const selector of [
+    '.hero-shell',
+    '.hero-brief',
+    '.premium-grid',
+    '.tender-layout',
+    '.vela-shell',
+    '.nav-status',
+  ]) {
+    assert.match(css, new RegExp(selector.replace('.', '\\.')));
+  }
+  assert.match(css, /font-size\s*:\s*clamp\(/i);
+  assert.match(css, /@media\s*\(max-width\s*:\s*(?:7\d\d|6\d\d)px\)/i);
+  assert.match(css, /overflow-x\s*:\s*(?:clip|hidden)/i);
+});
+
+test('premium stylesheet keeps keyboard focus and reduced-motion behaviour explicit', async () => {
+  const css = await read('redesign.css');
+  assert.match(css, /:focus-visible/i);
+  assert.match(css, /@media\s*\(prefers-reduced-motion\s*:\s*reduce\)/i);
+  assert.match(css, /\.reveal\s*\{[^}]*opacity\s*:\s*1[^}]*transform\s*:\s*none/is);
+});
+
+test('shared stylesheet continues to cover established secondary-page components', async () => {
+  const css = await read('redesign.css');
+  for (const selector of ['.solution-detail-hero', '.price-card', '.terms-panel', '.demo-preview', '.new-footer']) {
+    assert.match(css, new RegExp(selector.replace('.', '\\.')));
+  }
+});
+
+test('homepage presents one floating WhatsApp path without injecting a third hero action', async () => {
+  const html = await read('index.html');
+  const whatsapp = await read('whatsapp.js');
+  const staticFloat = /class=["'][^"']*whatsapp-float/.test(html) ? 1 : 0;
+  const injectedFloat = /arc-whatsapp-float/.test(whatsapp) ? 1 : 0;
+
+  assert.equal(staticFloat + injectedFloat, 1, 'Exactly one floating WhatsApp implementation should be active');
+  assert.doesNotMatch(whatsapp, /add\(document\.querySelector\('\.hero-home \.actions'\)/);
+});
