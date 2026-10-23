@@ -32,6 +32,10 @@
     window.addEventListener('resize',()=>{if(window.innerWidth>1160) closeMenu()});
   }
 
+  // Enhance only after the essential navigation handlers exist. Without this
+  // class, content and navigation stay visible if JavaScript fails to load.
+  document.documentElement.classList.add('js');
+
   // Remove the skip button entirely, while preserving the brief intro and automatic transition.
   document.querySelectorAll('.intro-skip').forEach(button=>button.remove());
 
@@ -166,7 +170,13 @@
 
   // Enquiry preparation; requires the visitor to send from their own app.
   if(document.getElementById('challenge-form')){
-    const intake=document.createElement('script');intake.src='contact-enquiry.js?v=20261014b';document.body.appendChild(intake);
+    const intake=document.createElement('script');
+    intake.src='contact-enquiry.js?v=20261023a';
+    intake.addEventListener('error',()=>{
+      const status=document.getElementById('challenge-status');
+      if(status)status.textContent='Draft tools are unavailable. Please use the direct email or WhatsApp links beside this form.';
+    });
+    document.body.appendChild(intake);
   }
 
   // Cloudflare Web Analytics for this ARCVERSE marketing site only (not the separate KAYA app).

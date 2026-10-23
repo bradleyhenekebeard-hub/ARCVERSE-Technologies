@@ -39,7 +39,6 @@
   document.head.appendChild(style);
 
   if (document.querySelector('.hero-home')) {
-    add(document.querySelector('.hero-home .actions'), 'general', 'Chat to ARCVERSE on WhatsApp');
     document.querySelectorAll('.service-card').forEach(card => {
       const label = card.querySelector('.service-kicker')?.textContent.trim();
       const type = label === 'Business AI' ? 'business' : label === 'Personal Finance' ? 'personal' : label === 'Websites & Branding' ? 'websites' : null;
