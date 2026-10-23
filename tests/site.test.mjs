@@ -124,6 +124,16 @@ test('welcome screen uses one clean text colour without highlighted words', asyn
   assert.match(css, /\.intro-tagline\s+b\s*\{[^}]*color\s*:\s*inherit/is);
 });
 
+test('problems section presents its introduction as one centred composition', async () => {
+  const html = await read('index.html');
+  const css = await read('redesign.css');
+  const problems = html.match(/<section\b[^>]*id=["']problems["'][\s\S]*?<\/section>/i)?.[0] ?? '';
+
+  assert.match(problems, /class=["'][^"']*section-head[^"']*["']/i);
+  assert.doesNotMatch(problems, /section-head-split/i);
+  assert.match(css, /\.section-head\s*\{[^}]*max-width\s*:\s*920px[^}]*text-align\s*:\s*center/is);
+});
+
 test('homepage exposes canonical search and social metadata plus structured organisation data', async () => {
   const html = await read('index.html');
   assert.match(html, /<title>[^<]*ARCVERSE TECHNOLOGIES[^<]*<\/title>/i);
