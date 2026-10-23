@@ -140,6 +140,7 @@ h2{font-size:clamp(2.25rem,4.3vw,4.45rem);line-height:1.02;letter-spacing:-.045e
 .tender-intro h2{margin:0 0 24px}
 .tender-intro .btn{margin-top:28px}
 .tender-board{padding:30px;border:1px solid rgba(167,196,221,.18);border-radius:18px;background:#07101c;box-shadow:var(--glow)}
+.board-header{position:relative;display:flex;justify-content:space-between;gap:14px;padding-bottom:17px;border-bottom:1px solid var(--line);color:#8fa0b4;font-size:.62rem;font-weight:800;letter-spacing:.14em}
 .tender-board ol{list-style:none;margin:0;padding:10px 0}
 .tender-board li{display:grid;grid-template-columns:46px 1fr;gap:15px;align-items:start;padding:17px 0;border-bottom:1px solid rgba(167,196,221,.1)}
 .tender-board li>span{width:36px;height:36px;display:grid;place-items:center;border-radius:9px;background:rgba(121,221,245,.06);border:1px solid rgba(121,221,245,.22);color:var(--cyan);font-size:.72rem;font-weight:800}

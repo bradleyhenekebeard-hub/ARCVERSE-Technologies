@@ -120,6 +120,7 @@ test('premium stylesheet defines the new responsive homepage components', async 
   assert.match(css, /font-size\s*:\s*clamp\(/i);
   assert.match(css, /@media\s*\(max-width\s*:\s*(?:7\d\d|6\d\d)px\)/i);
   assert.match(css, /overflow-x\s*:\s*(?:clip|hidden)/i);
+  assert.match(css, /\.board-header\s*\{[^}]*display\s*:\s*flex[^}]*border-bottom/is);
 });
 
 test('premium stylesheet keeps keyboard focus and reduced-motion behaviour explicit', async () => {
