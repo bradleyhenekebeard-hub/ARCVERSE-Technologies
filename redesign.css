@@ -264,8 +264,9 @@ h2{font-size:clamp(2.25rem,4.3vw,4.45rem);line-height:1.02;letter-spacing:-.045e
 .footer-links a{color:#9fafc0;font-size:.85rem;line-height:1.5}
 .footer-links a:hover{color:#fff}
 .footer-bottom{display:flex;justify-content:space-between;gap:16px;margin-top:50px;padding-top:20px;border-top:1px solid var(--line);color:#6f8094;font-size:.75rem}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
-.reveal.visible{opacity:1;transform:none}
+.reveal{opacity:1;transform:none}
+.js .reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.js .reveal.visible{opacity:1;transform:none}
 
 @media(min-width:1161px){
   .nav .nav-toggle{display:none}
@@ -273,10 +274,12 @@ h2{font-size:clamp(2.25rem,4.3vw,4.45rem);line-height:1.02;letter-spacing:-.045e
 }
 
 @media(max-width:1160px){
-  .nav-inner{position:relative}
-  .nav .nav-toggle{display:flex;margin-left:auto;align-items:center;justify-content:center}
-  .nav .nav-links{display:none;position:absolute;top:calc(100% - 1px);left:0;right:0;z-index:90;max-height:calc(100vh - 90px);overflow-y:auto;padding:14px;border:1px solid rgba(121,221,245,.2);border-radius:0 0 16px 16px;background:rgba(4,10,18,.99);box-shadow:0 25px 60px rgba(0,0,0,.55);flex-direction:column;align-items:stretch;gap:2px}
-  .nav .nav-links.menu-open{display:flex}
+  .nav-inner{position:relative;flex-wrap:wrap}
+  .nav .nav-toggle{display:none;margin-left:auto;align-items:center;justify-content:center}
+  .nav .nav-links{display:flex;position:static;width:100%;padding:0 0 14px;flex-direction:column;align-items:stretch;gap:2px}
+  .js .nav .nav-toggle{display:flex}
+  .js .nav .nav-links{display:none;position:absolute;top:calc(100% - 1px);left:0;right:0;z-index:90;max-height:calc(100vh - 90px);overflow-y:auto;padding:14px;border:1px solid rgba(121,221,245,.2);border-radius:0 0 16px 16px;background:rgba(4,10,18,.99);box-shadow:0 25px 60px rgba(0,0,0,.55)}
+  .js .nav .nav-links.menu-open{display:flex}
   .nav .nav-links>a{display:flex;padding:12px 13px;border-radius:8px}
   .nav .nav-links>a:hover{background:rgba(121,221,245,.06)}
   .nav .nav-links .nav-primary{display:flex;margin:4px 0 0;text-align:center}

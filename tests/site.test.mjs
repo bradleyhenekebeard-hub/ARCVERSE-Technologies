@@ -157,9 +157,27 @@ test('root HTML pages do not link to missing local files', async () => {
 });
 
 test('enquiry helper prepares user-controlled drafts without background submission', async () => {
+  const html = await read('index.html');
   const script = await read('contact-enquiry.js');
+  assert.doesNotMatch(html, /<button\s+type=["']submit["']/i);
+  assert.match(html, /id=["']challenge-email["'][^>]*\bdisabled\b/i);
+  assert.match(html, /id=["']challenge-whatsapp["'][^>]*\bdisabled\b/i);
+  assert.match(html, /<noscript>[\s\S]*direct email or WhatsApp links/i);
   assert.match(script, /preventDefault\(\)/);
+  assert.match(script, /challenge-email/);
+  assert.match(script, /\.disabled\s*=\s*false/);
   assert.match(script, /mailto:/);
   assert.match(script, /window\.open\(/);
   assert.doesNotMatch(script, /\bfetch\s*\(|XMLHttpRequest|sendBeacon/i);
+});
+
+test('essential content and navigation remain visible before JavaScript enhancement', async () => {
+  const css = await read('redesign.css');
+  const script = await read('script.js');
+
+  assert.match(css, /\.reveal\s*\{[^}]*opacity\s*:\s*1[^}]*transform\s*:\s*none/is);
+  assert.match(css, /\.js\s+\.reveal\s*\{[^}]*opacity\s*:\s*0/is);
+  assert.match(css, /@media\s*\(max-width\s*:\s*1160px\)[\s\S]*?\.nav\s+\.nav-links\s*\{[^}]*display\s*:\s*flex/is);
+  assert.match(css, /\.js\s+\.nav\s+\.nav-links\s*\{[^}]*display\s*:\s*none/is);
+  assert.match(script, /document\.documentElement\.classList\.add\(['"]js['"]\)/);
 });

@@ -214,8 +214,9 @@
           </label>
           <label>What is happening in your business? *<textarea name="challenge" required minlength="15" maxlength="1200" rows="5" placeholder="Explain the problem and what you would like to improve."></textarea></label>
           <p class="form-note">Do not include passwords, ID numbers or confidential documents. This form prepares a draft in your own email or WhatsApp app. It does not automatically submit your information.</p>
-          <div class="form-actions"><button type="submit" class="btn">Prepare Email Enquiry <span aria-hidden="true">→</span></button><button type="button" class="btn-ghost" id="challenge-whatsapp">Continue on WhatsApp <span aria-hidden="true">↗</span></button></div>
-          <p class="form-status" id="challenge-status" role="status" aria-live="polite">Review and send the prepared message in your chosen app.</p>
+          <noscript><p class="form-fallback">Draft preparation needs JavaScript. Please use the direct email or WhatsApp links beside this form instead.</p></noscript>
+          <div class="form-actions"><button type="button" class="btn" id="challenge-email" disabled>Prepare Email Enquiry <span aria-hidden="true">→</span></button><button type="button" class="btn-ghost" id="challenge-whatsapp" disabled>Continue on WhatsApp <span aria-hidden="true">↗</span></button></div>
+          <p class="form-status" id="challenge-status" role="status" aria-live="polite">Draft tools are loading. Nothing is sent automatically.</p>
         </form>
       </div>
     </section>
