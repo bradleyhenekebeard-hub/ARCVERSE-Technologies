@@ -107,6 +107,23 @@ test('landing hero uses one intentionally centred composition', async () => {
   assert.match(css, /\.hero-copy-block\s+\.brand-tagline\s*\{[^}]*text-align\s*:\s*center!important/is);
 });
 
+test('landing hero opens without oversized vertical dead space', async () => {
+  const css = await read('redesign.css');
+
+  assert.match(css, /\.hero-home\.solution-hero\s*\{[^}]*padding\s*:\s*clamp\(52px,5\.5vw,76px\)\s+0\s+clamp\(64px,6vw,84px\)[^}]*min-height\s*:\s*0/is);
+  assert.doesNotMatch(css, /\.hero-home\.solution-hero\s*\{[^}]*min-height\s*:\s*720px/is);
+});
+
+test('welcome screen uses one clean text colour without highlighted words', async () => {
+  const html = await read('index.html');
+  const css = await read('styles.css');
+
+  assert.match(html, /href=["']styles\.css\?v=20261023a["']/i);
+  assert.match(css, /\.intro-message\s+strong\s+em\s*\{[^}]*background\s*:\s*none[^}]*color\s*:\s*#f4fbff/is);
+  assert.doesNotMatch(css, /\.intro-message\s+strong\s+em\s*\{[^}]*linear-gradient/is);
+  assert.match(css, /\.intro-tagline\s+b\s*\{[^}]*color\s*:\s*inherit/is);
+});
+
 test('homepage exposes canonical search and social metadata plus structured organisation data', async () => {
   const html = await read('index.html');
   assert.match(html, /<title>[^<]*ARCVERSE TECHNOLOGIES[^<]*<\/title>/i);
@@ -166,7 +183,7 @@ test('every marketing page that uses the premium system loads the current versio
   const pages = ['index.html', 'business.html', 'personal.html', 'pricing.html', 'websites.html', 'kaya-walkthrough.html'];
   for (const page of pages) {
     const html = await read(page);
-    assert.match(html, /href=["']redesign\.css\?v=20261023d["']/i, `${page} has a stale premium stylesheet reference`);
+    assert.match(html, /href=["']redesign\.css\?v=20261023e["']/i, `${page} has a stale premium stylesheet reference`);
     assert.match(html, /src=["']script\.js\?v=20261023b["']/i, `${page} has a stale main-script reference`);
   }
 });

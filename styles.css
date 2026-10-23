@@ -108,7 +108,7 @@ html.intro-pending{overflow:hidden}
 .intro-message{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:13px;padding:20px;background:linear-gradient(180deg,transparent 8%,rgba(0,8,20,.58) 49%,transparent 91%);opacity:0;transform:translateY(24px);animation:intro-message 3.6s ease both;text-shadow:0 0 40px rgba(0,0,0,.85)}
 .intro-overline,.intro-subline{font-size:clamp(9px,1.05vw,13px);letter-spacing:.4em;color:#a1e8ff;font-weight:800}
 .intro-message strong{font-size:clamp(25px,5.1vw,66px);line-height:1.18;letter-spacing:.11em;font-weight:850;max-width:1100px}
-.intro-message strong em{font-style:normal;background:linear-gradient(90deg,#fff,#9deaff,#d1d0ff);-webkit-background-clip:text;background-clip:text;color:transparent}
+.intro-message strong em{font-style:normal;background:none;color:#f4fbff}
 .intro-skip{position:absolute;right:clamp(16px,4vw,52px);top:clamp(17px,4vw,43px);z-index:3;border:1px solid rgba(180,233,255,.55);border-radius:999px;padding:10px 17px;background:rgba(2,14,34,.8);color:#e2f6ff;letter-spacing:.08em;font-weight:700;cursor:pointer;transition:border-color .2s,background .2s}
 .intro-skip:hover,.intro-skip:focus-visible{border-color:#fff;background:rgba(23,89,144,.75)}
 @keyframes intro-stars{0%{transform:translateX(-20px);opacity:.1}35%{opacity:.8}100%{transform:translateX(14px);opacity:.45}}
@@ -307,6 +307,6 @@ html.intro-pending{overflow:hidden}
 /* ARCVERSE core brand tagline */
 
 .intro-tagline{font-size:clamp(11px,1.35vw,17px);letter-spacing:.28em;color:#eef8ff;font-weight:800}
-.intro-tagline b{color:#88e8ff;font-weight:900}
+.intro-tagline b{color:inherit;font-weight:900}
 .brand-tagline{text-transform:none!important;font-size:clamp(.82rem,1.4vw,1.05rem);letter-spacing:.2em!important;color:#eef8ff!important;margin-bottom:18px!important}
 .brand-tagline span{background:linear-gradient(90deg,#8eeaff,#8f8cff);-webkit-background-clip:text;background-clip:text;color:transparent;font-weight:900}
