@@ -129,6 +129,8 @@ test('homepage presents one floating WhatsApp path without injecting a third her
 
   assert.equal(staticFloat + injectedFloat, 1, 'Exactly one floating WhatsApp implementation should be active');
   assert.doesNotMatch(whatsapp, /add\(document\.querySelector\('\.hero-home \.actions'\)/);
+  assert.match(whatsapp, /arc-whatsapp-float/);
+  assert.match(await read('script.js'), /whatsapp\.js\?v=20261023a/);
 });
 
 test('every marketing page that uses the premium system loads the current version', async () => {
@@ -136,6 +138,7 @@ test('every marketing page that uses the premium system loads the current versio
   for (const page of pages) {
     const html = await read(page);
     assert.match(html, /href=["']redesign\.css\?v=20261023a["']/i, `${page} has a stale premium stylesheet reference`);
+    assert.match(html, /src=["']script\.js\?v=20261023b["']/i, `${page} has a stale main-script reference`);
   }
 });
 
