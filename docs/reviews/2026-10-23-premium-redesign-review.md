@@ -5,6 +5,8 @@ Repository: `bradleyhenekebeard-hub/ARCVERSE-Technologies`
 Branch: `redesign/premium-enterprise-20261023`  
 Baseline: `1cc151db71252c22a52340aeb371be79dc29781f`  
 Implementation head: `d10ad35f1e52c8231c8e5130879d36e0f36a72f4`
+Independent-review head: `c4ac88f407f5096fe5f3439e4fe5e32b5e9f7b05`  
+Review-remediation head: `0bddcc3ae2904e50c2b747011aaa8277e01d1e04`
 
 ## Outcome
 
@@ -28,12 +30,18 @@ The supplied screenshot and the production site at `https://arcverse.digital/` w
 
 ## Verification evidence
 
-- `npm test`: 12/12 passing at implementation head.
+- `npm test`: 13/13 passing after independent-review remediation.
 - All root HTML local links resolve to existing files.
 - The enquiry helper prevents normal submission, prepares only user-controlled email/WhatsApp drafts, and contains no background `fetch`, `XMLHttpRequest` or beacon submission.
 - Desktop homepage and Business Solutions page were reviewed in the local browser preview.
 - Mobile viewport checked at 390 x 844: document width matched viewport width, the navigation opened with all destinations, closed with Escape, and the VELA readiness notice remained legible.
 - Empty required enquiry form remained invalid; no external message was sent during testing.
+- JavaScript-disabled browser check at 320 px: essential content and navigation remained visible, document width remained 320 px, and both draft controls stayed disabled.
+- Enquiry-helper failure check: direct contact remained available, draft controls stayed disabled, and a clear fallback status appeared without a native submit control.
+
+## Independent review outcome
+
+The reviewer reported no Critical findings and two Important findings: hidden content/navigation when JavaScript is unavailable, and a possible native form submission if the enquiry helper fails. Both were fixed in `0bddcc3`: content and navigation are now visible by default and enhanced only after the primary script initializes; enquiry controls are non-submitting and disabled until the draft helper initializes. The failure paths were then exercised in the local browser with network blocking.
 
 ## Release status and gate
 
