@@ -91,7 +91,20 @@ test('landing hero removes the problem brief and restores the motion-safe ARCVER
   assert.match(html, /prefers-reduced-motion:\s*reduce/i);
   assert.match(html, /classList\.add\(["']intro-pending["']\)/i);
   assert.match(html, /setTimeout\([\s\S]*classList\.remove\(["']intro-pending["']\)/i);
-  assert.match(css, /\.hero-shell\s*\{[^}]*display\s*:\s*block/is);
+  assert.match(css, /\.hero-shell\s*\{[^}]*display\s*:\s*grid/is);
+});
+
+test('landing hero uses one intentionally centred composition', async () => {
+  const css = await read('redesign.css');
+
+  assert.match(css, /\.hero-shell\s*\{[^}]*place-items\s*:\s*center[^}]*text-align\s*:\s*center/is);
+  assert.match(css, /\.hero-copy-block\s*\{[^}]*margin\s*:\s*0\s+auto/is);
+  assert.match(css, /\.hero-copy-block\s+\.eyebrow\s*\{[^}]*text-align\s*:\s*center/is);
+  assert.match(css, /\.hero-copy-block\s+h1\s*\{[^}]*margin\s*:\s*0\s+auto[^}]*text-align\s*:\s*center/is);
+  assert.match(css, /\.hero-lead\s*\{[^}]*margin\s*:\s*28px\s+auto\s+0[^}]*text-align\s*:\s*center/is);
+  assert.match(css, /\.hero-actions\s*\{[^}]*justify-content\s*:\s*center/is);
+  assert.match(css, /\.hero-principles\s*\{[^}]*justify-content\s*:\s*center[^}]*margin\s*:\s*38px\s+auto\s+0/is);
+  assert.match(css, /\.hero-copy-block\s+\.brand-tagline\s*\{[^}]*text-align\s*:\s*center!important/is);
 });
 
 test('homepage exposes canonical search and social metadata plus structured organisation data', async () => {
@@ -153,7 +166,7 @@ test('every marketing page that uses the premium system loads the current versio
   const pages = ['index.html', 'business.html', 'personal.html', 'pricing.html', 'websites.html', 'kaya-walkthrough.html'];
   for (const page of pages) {
     const html = await read(page);
-    assert.match(html, /href=["']redesign\.css\?v=20261023c["']/i, `${page} has a stale premium stylesheet reference`);
+    assert.match(html, /href=["']redesign\.css\?v=20261023d["']/i, `${page} has a stale premium stylesheet reference`);
     assert.match(html, /src=["']script\.js\?v=20261023b["']/i, `${page} has a stale main-script reference`);
   }
 });
