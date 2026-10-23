@@ -32,11 +32,35 @@
     ]
   }
   </script>
+  <script>
+    try {
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        document.documentElement.classList.add('intro-pending');
+        window.setTimeout(function () {
+          document.documentElement.classList.remove('intro-pending');
+        }, 5000);
+      }
+    } catch (error) {
+      document.documentElement.classList.remove('intro-pending');
+    }
+  </script>
   <link rel="stylesheet" href="styles.css?v=20261014b">
-  <link rel="stylesheet" href="redesign.css?v=20261023a">
+  <link rel="stylesheet" href="redesign.css?v=20261023c">
 </head>
 <body>
   <a class="skip-link" href="#main-content">Skip to content</a>
+
+  <div class="intro-overlay" id="arcverse-intro" aria-hidden="true">
+    <div class="intro-stars" aria-hidden="true"></div>
+    <div class="intro-horizon" aria-hidden="true"></div>
+    <div class="intro-art" aria-hidden="true"></div>
+    <div class="intro-energy" aria-hidden="true"></div>
+    <div class="intro-flash" aria-hidden="true"></div>
+    <div class="intro-message" aria-hidden="true">
+      <strong>WELCOME TO<br><em>ARCVERSE TECHNOLOGIES</em></strong>
+      <span class="intro-tagline">Powered by <b>AI.</b> Guided by <b>Faith.</b></span>
+    </div>
+  </div>
 
   <header class="nav site-header">
     <div class="container nav-inner">
@@ -76,17 +100,6 @@
           <p class="brand-tagline">Powered by AI. Guided by Faith.</p>
         </div>
 
-        <aside class="hero-brief reveal" aria-label="ARCVERSE problem-to-outcome brief">
-          <div class="brief-topline"><span>ARCVERSE / 01</span><span>PROBLEM FIRST</span></div>
-          <img class="signal-logo" src="arcverse-symbol.webp?v=20260928a" alt="ARCVERSE TECHNOLOGIES emblem">
-          <p class="brief-label">FROM FRICTION</p>
-          <ul class="brief-list">
-            <li><span>01</span><strong>Scattered records</strong><small>Filing · contracts · evidence</small></li>
-            <li><span>02</span><strong>Slow decisions</strong><small>Approvals · reporting · visibility</small></li>
-            <li><span>03</span><strong>Missed value</strong><small>Billing · costs · deadlines</small></li>
-          </ul>
-          <div class="brief-outcome"><span>TO A CONTROLLED WORKFLOW</span><strong>Practical. Traceable. Right-sized.</strong></div>
-        </aside>
       </div>
     </section>
 

@@ -78,6 +78,22 @@ test('homepage has a single primary heading and complete landmarks and fragment 
   }
 });
 
+test('landing hero removes the problem brief and restores the motion-safe ARCVERSE welcome', async () => {
+  const html = await read('index.html');
+  const css = await read('redesign.css');
+  const text = visibleText(html);
+
+  assert.match(text, /Turn operational friction into systems that work\./i);
+  assert.doesNotMatch(html, /class=["'][^"']*hero-brief/i);
+  assert.doesNotMatch(html, /brief-topline|brief-list|brief-outcome/i);
+  assert.match(html, /id=["']arcverse-intro["']/i);
+  assert.match(html, /class=["'][^"']*intro-overlay/i);
+  assert.match(html, /prefers-reduced-motion:\s*reduce/i);
+  assert.match(html, /classList\.add\(["']intro-pending["']\)/i);
+  assert.match(html, /setTimeout\([\s\S]*classList\.remove\(["']intro-pending["']\)/i);
+  assert.match(css, /\.hero-shell\s*\{[^}]*display\s*:\s*block/is);
+});
+
 test('homepage exposes canonical search and social metadata plus structured organisation data', async () => {
   const html = await read('index.html');
   assert.match(html, /<title>[^<]*ARCVERSE TECHNOLOGIES[^<]*<\/title>/i);
@@ -94,7 +110,6 @@ test('premium stylesheet defines the new responsive homepage components', async 
   const css = await read('redesign.css');
   for (const selector of [
     '.hero-shell',
-    '.hero-brief',
     '.premium-grid',
     '.tender-layout',
     '.vela-shell',
@@ -105,6 +120,7 @@ test('premium stylesheet defines the new responsive homepage components', async 
   assert.match(css, /font-size\s*:\s*clamp\(/i);
   assert.match(css, /@media\s*\(max-width\s*:\s*(?:7\d\d|6\d\d)px\)/i);
   assert.match(css, /overflow-x\s*:\s*(?:clip|hidden)/i);
+  assert.match(css, /\.board-header\s*\{[^}]*display\s*:\s*flex[^}]*border-bottom/is);
 });
 
 test('premium stylesheet keeps keyboard focus and reduced-motion behaviour explicit', async () => {
@@ -137,7 +153,7 @@ test('every marketing page that uses the premium system loads the current versio
   const pages = ['index.html', 'business.html', 'personal.html', 'pricing.html', 'websites.html', 'kaya-walkthrough.html'];
   for (const page of pages) {
     const html = await read(page);
-    assert.match(html, /href=["']redesign\.css\?v=20261023a["']/i, `${page} has a stale premium stylesheet reference`);
+    assert.match(html, /href=["']redesign\.css\?v=20261023c["']/i, `${page} has a stale premium stylesheet reference`);
     assert.match(html, /src=["']script\.js\?v=20261023b["']/i, `${page} has a stale main-script reference`);
   }
 });
