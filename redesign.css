@@ -84,7 +84,7 @@ h2{font-size:clamp(2.25rem,4.3vw,4.45rem);line-height:1.02;letter-spacing:-.045e
 .section-alt{background:linear-gradient(180deg,rgba(13,25,42,.68),rgba(5,11,20,.68));border-block:1px solid rgba(164,196,220,.09)}
 
 /* Hero */
-.hero-home.solution-hero{padding:clamp(88px,10vw,148px) 0 104px;background:transparent;min-height:720px;display:grid;align-items:center}
+.hero-home.solution-hero{padding:clamp(52px,5.5vw,76px) 0 clamp(64px,6vw,84px);background:transparent;min-height:0;display:grid;align-items:start}
 .hero-home.solution-hero:before{content:"";position:absolute;z-index:-1;width:min(1120px,96vw);height:680px;left:50%;top:-130px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(ellipse at center,rgba(66,124,232,.19),rgba(67,174,220,.07) 38%,transparent 70%);filter:blur(10px)}
 .hero-home.solution-hero:after{content:"";position:absolute;left:50%;bottom:52px;width:min(820px,76vw);height:1px;transform:translateX(-50%);background:linear-gradient(90deg,transparent,rgba(121,221,245,.38),rgba(154,140,255,.28),transparent);box-shadow:0 0 36px rgba(93,174,237,.18);pointer-events:none}
 .hero-shell{display:grid;place-items:center;text-align:center}
