@@ -69,6 +69,17 @@ test('homepage uses the new cinematic solution storytelling components', async (
   assert.match(css, /@media\s*\(prefers-reduced-motion\s*:\s*reduce\)[\s\S]*?\.hero-orbit/is);
 });
 
+test('premium palette uses restrained champagne gold while preserving the ARCVERSE blue signal', async () => {
+  const css = await read('redesign.css');
+
+  assert.match(css, /--gold\s*:\s*#d8bd79/i);
+  assert.match(css, /--cyan\s*:\s*#79ddf5/i);
+  assert.doesNotMatch(css, /--violet\s*:/i);
+  assert.doesNotMatch(css, /#9a8cff/i);
+  assert.match(css, /\.hero-copy-block \.gradient-text\s*\{[^}]*var\(--gold\)/is);
+  assert.match(css, /:focus-visible[^}]*\{[^}]*outline\s*:\s*3px solid #b8f1ff/is);
+});
+
 test('mobile homepage keeps the capability rail, trust strip, and WhatsApp action compact', async () => {
   const css = await read('redesign.css');
   const whatsapp = await read('whatsapp.js');
@@ -239,7 +250,7 @@ test('every marketing page that uses the premium system loads the current versio
   const pages = ['index.html', 'business.html', 'personal.html', 'pricing.html', 'websites.html', 'kaya-walkthrough.html'];
   for (const page of pages) {
     const html = await read(page);
-    assert.match(html, /href=["']redesign\.css\?v=20261024a["']/i, `${page} has a stale premium stylesheet reference`);
+    assert.match(html, /href=["']redesign\.css\?v=20261024b["']/i, `${page} has a stale premium stylesheet reference`);
     assert.match(html, /src=["']script\.js\?v=20261024a["']/i, `${page} has a stale main-script reference`);
   }
 });
