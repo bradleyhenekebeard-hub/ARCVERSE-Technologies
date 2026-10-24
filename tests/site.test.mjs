@@ -69,6 +69,22 @@ test('homepage uses the new cinematic solution storytelling components', async (
   assert.match(css, /@media\s*\(prefers-reduced-motion\s*:\s*reduce\)[\s\S]*?\.hero-orbit/is);
 });
 
+test('homepage hero presents the heartbeat message with motion-safe background artwork', async () => {
+  const html = await read('index.html');
+  const css = await read('redesign.css');
+  const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] ?? '';
+  const heartbeatSvg = html.match(/<svg\b[^>]*class=["'][^"']*hero-heartbeat[^"']*["'][^>]*>/i)?.[0] ?? '';
+
+  assert.equal(visibleText(h1), 'The heartbeat behind smarter business operations.');
+  assert.doesNotMatch(visibleText(html), /Turn operational friction into systems that work\./i);
+  assert.match(heartbeatSvg, /aria-hidden=["']true["']/i);
+  assert.match(html, /class=["'][^"']*heartbeat-heart[^"']*["']/i);
+  assert.match(html, /class=["'][^"']*heartbeat-ecg[^"']*["']/i);
+  assert.match(css, /@keyframes\s+heartbeat-pulse/i);
+  assert.match(css, /@keyframes\s+heartbeat-trace/i);
+  assert.match(css, /@media\s*\(prefers-reduced-motion\s*:\s*reduce\)[\s\S]*?\.hero-heartbeat[^}]*animation\s*:\s*none/is);
+});
+
 test('premium palette uses restrained champagne gold while preserving the ARCVERSE blue signal', async () => {
   const css = await read('redesign.css');
 
@@ -140,7 +156,7 @@ test('landing hero removes the problem brief and restores the motion-safe ARCVER
   const css = await read('redesign.css');
   const text = visibleText(html);
 
-  assert.match(text, /Turn operational friction into systems that work\./i);
+  assert.match(text, /The heartbeat behind smarter business operations\./i);
   assert.doesNotMatch(html, /class=["'][^"']*hero-brief/i);
   assert.doesNotMatch(html, /brief-topline|brief-list|brief-outcome/i);
   assert.match(html, /id=["']arcverse-intro["']/i);
@@ -250,7 +266,7 @@ test('every marketing page that uses the premium system loads the current versio
   const pages = ['index.html', 'business.html', 'personal.html', 'pricing.html', 'websites.html', 'kaya-walkthrough.html'];
   for (const page of pages) {
     const html = await read(page);
-    assert.match(html, /href=["']redesign\.css\?v=20261024b["']/i, `${page} has a stale premium stylesheet reference`);
+    assert.match(html, /href=["']redesign\.css\?v=20261024c["']/i, `${page} has a stale premium stylesheet reference`);
     assert.match(html, /src=["']script\.js\?v=20261024a["']/i, `${page} has a stale main-script reference`);
   }
 });
