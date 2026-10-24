@@ -70,4 +70,3 @@ Review the landing hero and problems section at desktop width and at 390 x 844. 
 - [ ] **Step 6: Commit**
 
 Commit the palette refinement on `redesign/expanded-capabilities-20261024` without deploying or merging.
-

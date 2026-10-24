@@ -30,4 +30,3 @@ Use a hybrid palette: retain the black/deep-navy foundation and electric-blue AR
 - Text and controls retain clear contrast.
 - Desktop and mobile compositions remain unchanged and free of overflow.
 - Reduced-motion and focus-visible behaviour remain intact.
-
