@@ -192,7 +192,7 @@
   // Install context-aware WhatsApp enquiry links across marketing pages.
   if(!document.querySelector('script[data-arc-whatsapp-loader]')){
     const whatsapp=document.createElement('script');
-    whatsapp.src='whatsapp.js?v=20261023a';
+    whatsapp.src='whatsapp.js?v=20261024a';
     whatsapp.dataset.arcWhatsappLoader='true';
     document.body.appendChild(whatsapp);
   }

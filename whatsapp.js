@@ -34,7 +34,7 @@
     .arc-whatsapp-float::before{content:'\u2709';font-size:20px;line-height:1}
     .arc-whatsapp-float:hover{background:#157c40;transform:translateY(-2px);color:#fff}
     .arc-whatsapp-float:focus-visible,.arc-whatsapp-cta:focus-visible{outline:3px solid #fff;outline-offset:3px}
-    @media(max-width:600px){.arc-whatsapp-float{padding:12px 16px;font-size:13px;right:12px;bottom:calc(12px + env(safe-area-inset-bottom))}}
+    @media(max-width:600px){.arc-whatsapp-float{width:52px;height:52px;padding:0;font-size:0;right:12px;bottom:calc(12px + env(safe-area-inset-bottom))}.arc-whatsapp-float::before{font-size:21px}}
   `;
   document.head.appendChild(style);
 
