@@ -33,6 +33,52 @@ test('homepage visibly covers the operational problems ARCVERSE is asked to solv
   }
 });
 
+test('homepage presents the expanded enterprise solution capabilities in outcome language', async () => {
+  const text = visibleText(await read('index.html'));
+  const required = [
+    /income and expense/i,
+    /invoicing/i,
+    /weighbridge/i,
+    /telematics/i,
+    /company audits/i,
+    /AI-assisted audio safety detection/i,
+    /RFQ/i,
+    /tender application/i,
+  ];
+  for (const pattern of required) {
+    assert.match(text, pattern, `Missing expanded solution language: ${pattern}`);
+  }
+});
+
+test('telematics experience is stated credibly without an unsupported size superlative', async () => {
+  const text = visibleText(await read('index.html'));
+
+  assert.match(text, /delivered an integration with a leading global telematics provider/i);
+  assert.doesNotMatch(text, /biggest telematics (?:company|companies|provider|providers) in the world/i);
+});
+
+test('homepage uses the new cinematic solution storytelling components', async () => {
+  const html = await read('index.html');
+  const css = await read('redesign.css');
+
+  for (const className of ['hero-orbit', 'capability-rail', 'solution-spectrum', 'system-map', 'evidence-band']) {
+    assert.match(html, new RegExp(`class=["'][^"']*${className}`), `Missing homepage component .${className}`);
+    assert.match(css, new RegExp(`\\.${className.replace('-', '\\-')}`), `Missing styles for .${className}`);
+  }
+  assert.match(css, /@keyframes\s+orbit-drift/i);
+  assert.match(css, /@media\s*\(prefers-reduced-motion\s*:\s*reduce\)[\s\S]*?\.hero-orbit/is);
+});
+
+test('mobile homepage keeps the capability rail, trust strip, and WhatsApp action compact', async () => {
+  const css = await read('redesign.css');
+  const whatsapp = await read('whatsapp.js');
+
+  assert.match(css, /@media\s*\(max-width\s*:\s*430px\)[\s\S]*?\.hero-principles\.capability-rail\s*\{[^}]*display\s*:\s*flex[^}]*overflow-x\s*:\s*auto/is);
+  assert.match(css, /@media\s*\(max-width\s*:\s*430px\)[\s\S]*?\.hero-copy-block\s*\{[^}]*min-width\s*:\s*0/is);
+  assert.match(css, /@media\s*\(max-width\s*:\s*430px\)[\s\S]*?\.trust-grid\s*\{[^}]*grid-template-columns\s*:\s*repeat\(2,1fr\)/is);
+  assert.match(whatsapp, /@media\(max-width:600px\)\{\.arc-whatsapp-float\{[^}]*width:52px[^}]*height:52px[^}]*font-size:0/is);
+});
+
 test('VELA is visibly framed as proposed and in development without readiness claims', async () => {
   const html = await read('index.html');
   const vela = html.match(/<section\b[^>]*id=["']vela["'][^>]*>([\s\S]*?)<\/section>/i)?.[1] ?? '';
@@ -110,7 +156,7 @@ test('landing hero uses one intentionally centred composition', async () => {
 test('landing hero opens without oversized vertical dead space', async () => {
   const css = await read('redesign.css');
 
-  assert.match(css, /\.hero-home\.solution-hero\s*\{[^}]*padding\s*:\s*clamp\(52px,5\.5vw,76px\)\s+0\s+clamp\(64px,6vw,84px\)[^}]*min-height\s*:\s*0/is);
+  assert.match(css, /\.hero-home\.solution-hero\s*\{[^}]*padding\s*:\s*clamp\(62px,6vw,92px\)\s+0\s+clamp\(72px,7vw,104px\)[^}]*min-height\s*:\s*0/is);
   assert.doesNotMatch(css, /\.hero-home\.solution-hero\s*\{[^}]*min-height\s*:\s*720px/is);
 });
 
@@ -186,15 +232,15 @@ test('homepage presents one floating WhatsApp path without injecting a third her
   assert.equal(staticFloat + injectedFloat, 1, 'Exactly one floating WhatsApp implementation should be active');
   assert.doesNotMatch(whatsapp, /add\(document\.querySelector\('\.hero-home \.actions'\)/);
   assert.match(whatsapp, /arc-whatsapp-float/);
-  assert.match(await read('script.js'), /whatsapp\.js\?v=20261023a/);
+  assert.match(await read('script.js'), /whatsapp\.js\?v=20261024a/);
 });
 
 test('every marketing page that uses the premium system loads the current version', async () => {
   const pages = ['index.html', 'business.html', 'personal.html', 'pricing.html', 'websites.html', 'kaya-walkthrough.html'];
   for (const page of pages) {
     const html = await read(page);
-    assert.match(html, /href=["']redesign\.css\?v=20261023e["']/i, `${page} has a stale premium stylesheet reference`);
-    assert.match(html, /src=["']script\.js\?v=20261023b["']/i, `${page} has a stale main-script reference`);
+    assert.match(html, /href=["']redesign\.css\?v=20261024a["']/i, `${page} has a stale premium stylesheet reference`);
+    assert.match(html, /src=["']script\.js\?v=20261024a["']/i, `${page} has a stale main-script reference`);
   }
 });
 
