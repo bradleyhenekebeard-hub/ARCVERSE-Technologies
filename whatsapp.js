@@ -1,7 +1,7 @@
 /* ARCVERSE marketing-site WhatsApp enquiries. No changes to the separate KAYA application. */
 (function () {
   'use strict';
-  const phone = '27764224935';
+  const phone = '27798080718';
   const enquiries = {
     general: 'Hi ARCVERSE, I would like to discuss a business problem and a practical solution.',
     business: 'Hi ARCVERSE, I would like to discuss a targeted solution for my business challenge.',
