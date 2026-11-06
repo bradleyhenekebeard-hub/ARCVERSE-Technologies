@@ -29,7 +29,7 @@ emailButton.addEventListener('click',()=>{
 whatsappButton.addEventListener('click',()=>{
  if(!form.reportValidity())return;
  status.textContent='WhatsApp should open with a prepared message. Review and press Send; this website has not yet submitted it.';
- const link='https://wa.me/27764224935?text='+encodeURIComponent(summary());
+ const link='https://wa.me/27798080718?text='+encodeURIComponent(summary());
  const pop=window.open(link,'_blank','noopener,noreferrer');
  if(!pop)window.location.href=link;
 });
