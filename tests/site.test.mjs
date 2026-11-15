@@ -128,13 +128,27 @@ test('brand, destinations, and draft-only enquiry safeguards remain available', 
     'pricing.html',
     'walkthrough.html',
     'mailto:solutions@arcverse.digital',
-    'https://wa.me/27764224935',
+    'https://wa.me/27798080718',
   ]) {
     assert.match(html, new RegExp(`href=["']${href.replace(/[.*+?^${}()|[\]\\]/g, '\\$&')}`));
   }
   assert.match(text, /does not automatically submit your information/i);
   assert.match(html, /id=["']challenge-form["']/i);
   assert.match(html, /id=["']challenge-whatsapp["']/i);
+});
+
+test('contact details distinguish the Ireland and South Africa phone numbers', async () => {
+  const pages = ['index.html', 'business.html', 'personal.html', 'pricing.html', 'websites.html', 'kaya-walkthrough.html'];
+
+  for (const page of pages) {
+    const html = await read(page);
+    const text = visibleText(html);
+
+    assert.match(html, /href=["']tel:\+353852306298["']/i, `${page} is missing the Ireland phone link`);
+    assert.match(text, /\+353 85 230 6298 \(Ireland\)/i, `${page} is missing the labelled Ireland number`);
+    assert.match(html, /href=["']https:\/\/wa\.me\/27798080718["']/i, `${page} is missing the South Africa WhatsApp link`);
+    assert.match(text, /\+27 79 808 0718 \(South Africa\)/i, `${page} is missing the labelled South Africa number`);
+  }
 });
 
 test('homepage has a single primary heading and complete landmarks and fragment targets', async () => {
