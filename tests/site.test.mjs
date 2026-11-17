@@ -97,6 +97,30 @@ test('GNOME metadata describes governed agentic operating intelligence', async (
   assert.match(head, /Agentic operating intelligence/i);
 });
 
+test('GNOME section explains governed intelligence and human control', async () => {
+  const html = await read('index.html');
+  const gnome = html.match(/<section\b[^>]*id=["']gnome["'][^>]*>([\s\S]*?)<\/section>/i)?.[1] ?? '';
+  const text = visibleText(gnome);
+
+  for (const stage of ['Company inputs', 'Governed company memory', 'Management intelligence', 'Human-controlled action']) {
+    assert.match(text, new RegExp(stage, 'i'), `Missing GNOME intelligence stage: ${stage}`);
+  }
+  for (const concept of ['traceable evidence', 'institutional knowledge', 'management attention', 'confirmed for each organisation']) {
+    assert.match(text, new RegExp(concept, 'i'), `Missing GNOME concept: ${concept}`);
+  }
+  assert.equal((gnome.match(/class=["'][^"']*\bgnome-differentiator(?:\s+[^"']*)?["']/gi) ?? []).length, 4);
+});
+
+test('GNOME copy avoids unsupported autonomy and readiness claims', async () => {
+  const html = await read('index.html');
+  const gnome = html.match(/<section\b[^>]*id=["']gnome["'][^>]*>([\s\S]*?)<\/section>/i)?.[1] ?? '';
+  const text = visibleText(gnome);
+
+  assert.match(text, /human-controlled/i);
+  assert.match(text, /confirmed for each organisation/i);
+  assert.doesNotMatch(text, /fully autonomous|production[- ]ready|available everywhere|certified|completed customer deployment/i);
+});
+
 test('homepage hero presents the heartbeat message with motion-safe background artwork', async () => {
   const html = await read('index.html');
   const css = await read('redesign.css');
