@@ -31,6 +31,7 @@ The exact line **The heartbeat behind smarter business operations.** remains pro
 - Desktop browser review at 1440 x 900 confirmed the welcome-to-hero transition, GNOME-first navigation, centred hero hierarchy, GNOME operating model, governance note, problem section, contact form and footer.
 - Mobile browser review at 390 x 844 confirmed a centred hero, single-column GNOME flow, full-width hero actions and no horizontal overflow (`scrollWidth === clientWidth`).
 - The mobile navigation opened and closed using the keyboard, reported the correct `aria-expanded` state and exposed all nine destinations.
+- Keyboard traversal reached the primary GNOME navigation link, both GNOME hero actions and both contact actions in DOM order; each focused control displayed a `2.4px` cyan outline.
 - Reduced-motion emulation matched `prefers-reduced-motion: reduce`; the GNOME signal and hero orbit reported `animation-name: none`.
 - The page contains one visible `h1`, one `main`, one `nav`, one `footer`, no duplicate IDs and no empty links.
 - Both direct contact routes are present: `+353 85 230 6298 (Ireland)` and `+27 79 808 0718 (South Africa)`.
