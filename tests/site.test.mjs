@@ -308,6 +308,22 @@ test('premium stylesheet keeps keyboard focus and reduced-motion behaviour expli
   assert.match(css, /\.reveal\s*\{[^}]*opacity\s*:\s*1[^}]*transform\s*:\s*none/is);
 });
 
+test('GNOME visual system is responsive and motion safe', async () => {
+  const html = await read('index.html');
+  const css = await read('redesign.css');
+
+  for (const selector of ['.gnome-section', '.gnome-intelligence-map', '.gnome-differentiators']) {
+    assert.match(css, new RegExp(selector.replace('.', '\\.')));
+  }
+  assert.match(css, /\.gnome-intelligence-map\s*\{[^}]*grid-template-columns\s*:\s*repeat\(4,minmax\(0,1fr\)\)/is);
+  assert.match(css, /\.gnome-stage\s*,\s*\.gnome-differentiator\s*\{[^}]*min-width\s*:\s*0[^}]*overflow-wrap\s*:\s*anywhere/is);
+  assert.match(css, /@keyframes\s+gnome-signal-scan/i);
+  assert.match(css, /\.gnome-signal\s+span\s*\{[^}]*animation\s*:\s*gnome-signal-scan/is);
+  assert.match(css, /@media\s*\(max-width\s*:\s*760px\)[\s\S]*?\.gnome-intelligence-map\s*\{[^}]*grid-template-columns\s*:\s*1fr/is);
+  assert.match(css, /@media\s*\(prefers-reduced-motion\s*:\s*reduce\)[\s\S]*?\.gnome-signal\s+span\s*\{[^}]*animation\s*:\s*none/is);
+  assert.match(html, /class=["'][^"']*gnome-signal[^"']*["'][^>]*aria-hidden=["']true["']/i);
+});
+
 test('shared stylesheet continues to cover established secondary-page components', async () => {
   const css = await read('redesign.css');
   for (const selector of ['.solution-detail-hero', '.service-truth', '.price-card', '.terms-panel', '.demo-preview', '.new-footer']) {
@@ -331,7 +347,7 @@ test('every marketing page that uses the premium system loads the current versio
   const pages = ['index.html', 'business.html', 'personal.html', 'pricing.html', 'websites.html', 'kaya-walkthrough.html'];
   for (const page of pages) {
     const html = await read(page);
-    assert.match(html, /href=["']redesign\.css\?v=20261024c["']/i, `${page} has a stale premium stylesheet reference`);
+    assert.match(html, /href=["']redesign\.css\?v=20261117a["']/i, `${page} has a stale premium stylesheet reference`);
     assert.match(html, /src=["']script\.js\?v=20261024a["']/i, `${page} has a stale main-script reference`);
   }
 });
