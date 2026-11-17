@@ -69,13 +69,64 @@ test('homepage uses the new cinematic solution storytelling components', async (
   assert.match(css, /@media\s*\(prefers-reduced-motion\s*:\s*reduce\)[\s\S]*?\.hero-orbit/is);
 });
 
+test('homepage leads with Company GNOME as the flagship technology', async () => {
+  const html = await read('index.html');
+  const text = visibleText(html);
+  const h1 = visibleText(html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] ?? '');
+  const nav = html.match(/<nav\b[^>]*id=["']site-nav["'][^>]*>([\s\S]*?)<\/nav>/i)?.[1] ?? '';
+  const firstNavHref = nav.match(/<a\b[^>]*href=["']([^"']+)["']/i)?.[1] ?? '';
+
+  assert.match(h1, /Company GNOME/i);
+  assert.match(h1, /The agentic intelligence layer for your entire business\./i);
+  assert.match(text, /private, governed agentic operating intelligence layer/i);
+  assert.match(text, /The heartbeat behind smarter business operations\./i);
+  assert.equal(firstNavHref, '#gnome');
+  assert.match(html, /class=["'][^"']*orbit-node[^"']*["'][^>]*>KNOWLEDGE</i);
+  assert.match(html, /class=["'][^"']*orbit-node[^"']*["'][^>]*>EVIDENCE</i);
+  assert.match(html, /class=["'][^"']*orbit-node[^"']*["'][^>]*>ACTION</i);
+  assert.match(html, /<section\b[^>]*id=["']gnome["']/i);
+});
+
+test('GNOME metadata describes governed agentic operating intelligence', async () => {
+  const html = await read('index.html');
+  const head = html.match(/<head\b[^>]*>([\s\S]*?)<\/head>/i)?.[1] ?? '';
+
+  assert.match(head, /<title>Company GNOME \| Agentic Operating Intelligence \| ARCVERSE TECHNOLOGIES<\/title>/i);
+  assert.match(head, /<meta\s+name=["']description["'][^>]*private, governed agentic operating intelligence layer/i);
+  assert.match(head, /<meta\s+property=["']og:title["'][^>]*Company GNOME/i);
+  assert.match(head, /Agentic operating intelligence/i);
+});
+
+test('GNOME section explains governed intelligence and human control', async () => {
+  const html = await read('index.html');
+  const gnome = html.match(/<section\b[^>]*id=["']gnome["'][^>]*>([\s\S]*?)<\/section>/i)?.[1] ?? '';
+  const text = visibleText(gnome);
+
+  for (const stage of ['Company inputs', 'Governed company memory', 'Management intelligence', 'Human-controlled action']) {
+    assert.match(text, new RegExp(stage, 'i'), `Missing GNOME intelligence stage: ${stage}`);
+  }
+  for (const concept of ['traceable evidence', 'institutional knowledge', 'management attention', 'confirmed for each organisation']) {
+    assert.match(text, new RegExp(concept, 'i'), `Missing GNOME concept: ${concept}`);
+  }
+  assert.equal((gnome.match(/class=["'][^"']*\bgnome-differentiator(?:\s+[^"']*)?["']/gi) ?? []).length, 4);
+});
+
+test('GNOME copy avoids unsupported autonomy and readiness claims', async () => {
+  const html = await read('index.html');
+  const gnome = html.match(/<section\b[^>]*id=["']gnome["'][^>]*>([\s\S]*?)<\/section>/i)?.[1] ?? '';
+  const text = visibleText(gnome);
+
+  assert.match(text, /human-controlled/i);
+  assert.match(text, /confirmed for each organisation/i);
+  assert.doesNotMatch(text, /fully autonomous|production[- ]ready|available everywhere|certified|completed customer deployment/i);
+});
+
 test('homepage hero presents the heartbeat message with motion-safe background artwork', async () => {
   const html = await read('index.html');
   const css = await read('redesign.css');
-  const h1 = html.match(/<h1\b[^>]*>([\s\S]*?)<\/h1>/i)?.[1] ?? '';
   const heartbeatSvg = html.match(/<svg\b[^>]*class=["'][^"']*hero-heartbeat[^"']*["'][^>]*>/i)?.[0] ?? '';
 
-  assert.equal(visibleText(h1), 'The heartbeat behind smarter business operations.');
+  assert.match(visibleText(html), /The heartbeat behind smarter business operations\./i);
   assert.doesNotMatch(visibleText(html), /Turn operational friction into systems that work\./i);
   assert.match(heartbeatSvg, /aria-hidden=["']true["']/i);
   assert.match(html, /class=["'][^"']*heartbeat-heart[^"']*["']/i);
@@ -257,6 +308,22 @@ test('premium stylesheet keeps keyboard focus and reduced-motion behaviour expli
   assert.match(css, /\.reveal\s*\{[^}]*opacity\s*:\s*1[^}]*transform\s*:\s*none/is);
 });
 
+test('GNOME visual system is responsive and motion safe', async () => {
+  const html = await read('index.html');
+  const css = await read('redesign.css');
+
+  for (const selector of ['.gnome-section', '.gnome-intelligence-map', '.gnome-differentiators']) {
+    assert.match(css, new RegExp(selector.replace('.', '\\.')));
+  }
+  assert.match(css, /\.gnome-intelligence-map\s*\{[^}]*grid-template-columns\s*:\s*repeat\(4,minmax\(0,1fr\)\)/is);
+  assert.match(css, /\.gnome-stage\s*,\s*\.gnome-differentiator\s*\{[^}]*min-width\s*:\s*0[^}]*overflow-wrap\s*:\s*anywhere/is);
+  assert.match(css, /@keyframes\s+gnome-signal-scan/i);
+  assert.match(css, /\.gnome-signal\s+span\s*\{[^}]*animation\s*:\s*gnome-signal-scan/is);
+  assert.match(css, /@media\s*\(max-width\s*:\s*760px\)[\s\S]*?\.gnome-intelligence-map\s*\{[^}]*grid-template-columns\s*:\s*1fr/is);
+  assert.match(css, /@media\s*\(prefers-reduced-motion\s*:\s*reduce\)[\s\S]*?\.gnome-signal\s+span\s*\{[^}]*animation\s*:\s*none/is);
+  assert.match(html, /class=["'][^"']*gnome-signal[^"']*["'][^>]*aria-hidden=["']true["']/i);
+});
+
 test('shared stylesheet continues to cover established secondary-page components', async () => {
   const css = await read('redesign.css');
   for (const selector of ['.solution-detail-hero', '.service-truth', '.price-card', '.terms-panel', '.demo-preview', '.new-footer']) {
@@ -280,7 +347,7 @@ test('every marketing page that uses the premium system loads the current versio
   const pages = ['index.html', 'business.html', 'personal.html', 'pricing.html', 'websites.html', 'kaya-walkthrough.html'];
   for (const page of pages) {
     const html = await read(page);
-    assert.match(html, /href=["']redesign\.css\?v=20261024c["']/i, `${page} has a stale premium stylesheet reference`);
+    assert.match(html, /href=["']redesign\.css\?v=20261117a["']/i, `${page} has a stale premium stylesheet reference`);
     assert.match(html, /src=["']script\.js\?v=20261024a["']/i, `${page} has a stale main-script reference`);
   }
 });
@@ -318,9 +385,14 @@ test('enquiry helper prepares user-controlled drafts without background submissi
 });
 
 test('essential content and navigation remain visible before JavaScript enhancement', async () => {
+  const html = await read('index.html');
   const css = await read('redesign.css');
   const script = await read('script.js');
 
+  assert.match(visibleText(html), /Company GNOME/i);
+  assert.match(visibleText(html), /The agentic intelligence layer for your entire business\./i);
+  assert.match(html, /href=["']#gnome["']/i);
+  assert.match(html, /href=["']#contact["']/i);
   assert.match(css, /\.reveal\s*\{[^}]*opacity\s*:\s*1[^}]*transform\s*:\s*none/is);
   assert.match(css, /\.js\s+\.reveal\s*\{[^}]*opacity\s*:\s*0/is);
   assert.match(css, /@media\s*\(max-width\s*:\s*1160px\)[\s\S]*?\.nav\s+\.nav-links\s*\{[^}]*display\s*:\s*flex/is);
