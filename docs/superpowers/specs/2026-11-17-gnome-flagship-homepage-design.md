@@ -52,4 +52,3 @@ GNOME may be described as ARCVERSE's flagship technology and a private, governed
 - Existing use cases remain discoverable and are explicitly connected to GNOME.
 - Existing brand, contact, animation, VELA, accessibility and reduced-motion safeguards remain intact.
 - Automated tests, desktop review and 390x844 mobile review pass with no horizontal overflow or browser warnings/errors.
-

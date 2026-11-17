@@ -216,4 +216,3 @@ git commit -m "Document GNOME homepage verification"
 - [ ] **Step 7: Prepare the user preview handoff**
 
 Provide the local preview outcome, exact changes and test evidence. Ask for explicit deployment approval only after the user reviews the verified design.
-
